@@ -13,10 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{542210e1-de73-40ba-8450-884679519953}</UniqueIdentifier>
-      <Extensions>glsl;vert;frag;</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clock.cpp">
@@ -78,13 +74,5 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="triangles.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="triangles.frag">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

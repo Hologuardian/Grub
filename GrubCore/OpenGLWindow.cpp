@@ -2,7 +2,7 @@
 
 OpenGLWindow::OpenGLWindow()
 {
-	Logger::Log(Logger::EMessageType::INFO, "Constructing GL Window");
+	Logger::Log(EMessageType::LOG_INFO, "Constructing GL Window");
 }
 
 enum VAO_IDs { Triangles, NumVAOs };
@@ -12,8 +12,9 @@ enum Attrib_IDs { vPosition = 0 };
 GLuint VAOs[NumVAOs];
 GLuint Buffers[NumBuffers];
 GLuint location;
-GLuint cameraMatrix;
-const GLuint NumVertices = 8;
+GLuint cameraMatrix; 
+GLuint projMatrixLoc;
+const GLuint NumVertices = 24;
 
 void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInit(&argc, argv);
@@ -21,6 +22,7 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(720, 720);
 	glutCreateWindow("Grub");
+
 	glewInit();
 	
 	glEnable(GL_DEPTH_TEST);
@@ -35,52 +37,49 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glUseProgram(program);
 
 	GLfloat vertices[NumVertices][3] = {
-		{ -0.10,  0, -0.10 }, // Square
-		{ 0.1, 0, -0.10 },
-		{ 0.10, 0.025, 0.10 },
-		{ -0.1, 0.025, 0.10 },
-		{ -0.10,  0, -0.10 }, // Square
-		{ 0.1, 0, -0.10 },
-		{ 0.10, 0.025, 0.10 },
-		{ -0.1, 0.025, 0.10 }
-	/*
-		{ 1.0,1.0,1.0 },
-		{ -1.0,1.0,1.0 },
-		{ 1.0,1.0,-1.0 },
-		{ -1.0,1.0,-1.0 },//
-		{ 1.0,-1.0,1.0 },
-		{ -1.0,-1.0,1.0 },
-		{ 1.0,-1.0,-1.0 },
-		{ -1.0,-1.0,-1.0 },//
-		{ 1.0,1.0,1.0 },
-		{ 1.0,1.0,-1.0 },
-		{ 1.0,-1.0,1.0 },
-		{ 1.0,-1.0,-1.0 },//
-		{ -1.0,1.0,1.0 },
-		{ -1.0,1.0,-1.0 },
-		{ -1.0,-1.0,1.0 },
-		{ -1.0,-1.0,-1.0 },//
-		{ 1.0,1.0,1.0 },
-		{ 1.0,-1.0,1.0 },
-		{ -1.0,1.0,1.0 },
-		{ -1.0,-1.0,1.0 },//
-		{ 1.0,1.0,-1.0 },
-		{ 1.0,-1.0,-1.0 },
-		{ -1.0,1.0,-1.0 },
-		{ -1.0,-1.0,-1.0 }//
-		*/
+		//{ -0.10,  0, -0.10 }, // Square
+		//{ 0.1, 0, -0.10 },
+		//{ 0.10, 0, 0.10 },
+		//{ -0.1, 0, 0.10 },
+		//{ -0.10,  0, -0.10 }, // Square
+		//{ 0.1, 0, -0.10 },
+		//{ 0.10, 0, 0.10 },
+		//{ -0.1, 0, 0.10 }
+		{ 0.1,0.1,-0.1 },
+		{ 0.1,0.1,0.1 },
+		{ -0.1,0.1,0.1 },
+		{ -0.1,0.1,-0.1 },//
+		{ 0.1,-0.1,-0.1 },
+		{ 0.1,-0.1,0.1 },
+		{ -0.1,-0.1,0.1 },
+		{ -0.1,-0.1,-0.1 },//
+		{ 0.1,-0.1,0.1 },
+		{ 0.1,0.1,0.1 },
+		{ 0.1,0.1,-0.1 },
+		{ 0.1,-0.1,-0.1 },//
+		{ -0.1,-0.1,0.1 },
+		{ -0.1,0.1,0.1 },
+		{ -0.1,0.1,-0.1 },
+		{ -0.1,-0.1,-0.1 },//
+		{ -0.1,0.1,0.1 },
+		{ 0.1,0.1,0.1 },
+		{ 0.1,-0.1,0.1 },
+		{ -0.1,-0.1,0.1 },//
+		{ -0.1,0.1,-0.1 },
+		{ 0.1,0.1,-0.1 },
+		{ 0.1,-0.1,-0.1 },
+		{ -0.1,-0.1,-0.1 }//
 	};
 
 	GLfloat colorData[NumVertices][3] = {
-		{ 0,1,0 },
-		{ 0,1,0 },
-		{ 0,1,0 },
-		{ 0,1,0 },//
-		{ 0,0.8f,0 },
-		{ 0,0.8f,0 },
-		{ 0,0.8f,0 },
-		{ 0,0.8f,0 }//
-		/*
+		//{ 0,1,0 },
+		//{ 0,1,0 },
+		//{ 0,1,0 },
+		//{ 0,1,0 },//
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 }//
 		{ 0,1,0 },
 		{ 0,1,0 },
 		{ 0,1,0 },
@@ -101,7 +100,6 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 		{ 1,1,1 },
 		{ 1,1,1 },
 		{ 1,1,1 }//
-		*/
 	};
 
 	glGenBuffers(2, Buffers);
@@ -121,26 +119,26 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 
 	location = glGetUniformLocation(program, "model_matrix");
 	cameraMatrix = glGetUniformLocation(program, "camera_matrix");
+	projMatrixLoc = glGetUniformLocation(program, "proj_matrix");
 
 	glm::mat4 proj = glm::perspective(45.0f, 512.0f / 512.0f, 0.1f, 100.0f);
-	GLuint projMatrixLoc = glGetUniformLocation(program, "proj_matrix");
 	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &proj[0][0]);
 }
 
 void OpenGLWindow::SetDisplay(void (Display)()) {
-	Logger::Log(Logger::EMessageType::INFO, "Setting display function");
+	Logger::Log(EMessageType::LOG_INFO, "Setting display function");
 	glutDisplayFunc(Display);
 	glutMainLoop();
 }
 
 void OpenGLWindow::SetUpdate(void (UpdateCallBack)()) {
-	Logger::Log(Logger::EMessageType::INFO, "Setting update function");
+	Logger::Log(EMessageType::LOG_INFO, "Setting update function");
 	glutIdleFunc(UpdateCallBack);
 }
 
 void OpenGLWindow::startRender()
 {
-	glClear(GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void OpenGLWindow::endRender()
@@ -165,21 +163,19 @@ void OpenGLWindow::renderModel(Model * model)
 float i = 0.0f;
 void OpenGLWindow::testDraw(glm::vec3 pos, int c)
 {
-	i += 0.005f;
-	Logger::Log(Logger::EMessageType::INFO, "Test Draw Start");
-	Logger::Log(Logger::EMessageType::INFO, "Rotate Value: " + std::to_string(i));
-
-	glm::mat4 cam = glm::lookAt(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0, 0, 0), glm::vec3(0.0f, 1.0f, 0.0f));
+	i += 0.0005f;
+	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw Start");
+	Logger::Log(EMessageType::LOG_UPDATE, "Rotate Value: " + std::to_string(i));
 
 	glm::mat4 model_view = glm::translate(glm::mat4(1.0), pos);
-	
 	//model_view = glm::rotate(model_view, i, glm::vec3(0.0f, 1.0f, 0.0f));
-	
 	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view[0][0]);
+
+	glm::mat4 cam = glm::lookAt(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0, 0, 0.0f), glm::vec3(0.0f, 1.0f, 1.0f));
 	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &cam[0][0]);
 
 	glDrawArrays(GL_QUADS, 4 * c, NumVertices);
-	Logger::Log(Logger::EMessageType::INFO, "Test Draw End");
+	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw End");
 }
 
 OpenGLWindow::~OpenGLWindow()

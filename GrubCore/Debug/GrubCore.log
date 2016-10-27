@@ -1,1 +1,4 @@
-﻿
+﻿  OpenGLWindow.cpp
+d:\dev\c++\grub\grubcore\openglwindow.cpp(72): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+d:\dev\c++\grub\grubcore\openglwindow.cpp(72): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  GrubCore.vcxproj -> D:\Dev\C++\Grub\Debug\GrubCore.lib

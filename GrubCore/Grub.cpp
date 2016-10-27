@@ -22,18 +22,18 @@ double lastTime = 0;
 double currentTime = 0;
 void Grub::Update()
 {
-	Logger::Log(Logger::EMessageType::INFO, "Update Start");
+	Logger::Log(EMessageType::LOG_UPDATE, "Update Start");
 	lastTime = currentTime;
 	currentTime = Clock::getCurrentTime();
 	instance->Update(currentTime- lastTime);
-	Logger::Log(Logger::EMessageType::INFO, "Update End");
+	Logger::Log(EMessageType::LOG_UPDATE, "Update End");
 	glutPostRedisplay();
 }
 
 void Grub::Display()
 {
-	Logger::Log(Logger::EMessageType::INFO, "Render Start");
+	Logger::Log(EMessageType::LOG_UPDATE, "Render Start");
 	instance->Render();
 
-	Logger::Log(Logger::EMessageType::INFO, "Render End");
+	Logger::Log(EMessageType::LOG_UPDATE, "Render End");
 }
