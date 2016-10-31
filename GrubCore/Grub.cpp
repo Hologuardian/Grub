@@ -25,6 +25,8 @@ void Grub::Update()
 	Logger::Log(EMessageType::LOG_UPDATE, "Update Start");
 	lastTime = currentTime;
 	currentTime = Clock::getCurrentTime();
+	if (lastTime == 0)
+		lastTime = currentTime;
 	instance->Update(currentTime- lastTime);
 	Logger::Log(EMessageType::LOG_UPDATE, "Update End");
 	glutPostRedisplay();

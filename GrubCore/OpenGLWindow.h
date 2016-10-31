@@ -21,7 +21,7 @@ public:
 	void SetDisplay(void (Display)());
 	void renderPrimitive(PrimativeType prim);
 	void renderModel(Model* model);
-	void testDraw(glm::vec3 pos, int c);
+	void testDraw(glm::vec3 pos, int c, glm::vec3 cam);
 	void startRender();
 	void endRender();
 };

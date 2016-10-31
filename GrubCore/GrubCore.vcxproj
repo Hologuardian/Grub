@@ -130,9 +130,11 @@
   <ItemGroup>
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="LoadShaders.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Grub.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="OpenGLWindow.h" />
     <ClInclude Include="Resource.h" />

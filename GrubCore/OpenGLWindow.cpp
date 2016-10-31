@@ -15,12 +15,15 @@ GLuint location;
 GLuint cameraMatrix; 
 GLuint projMatrixLoc;
 const GLuint NumVertices = 24;
+const float screenWidth = 1520;
+const float screenHeight = 790;
 
 void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA);
 	glutInitDisplayMode(GLUT_DOUBLE);
-	glutInitWindowSize(720, 720);
+	glutInitWindowSize(screenWidth, screenHeight);
+	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Grub");
 
 	glewInit();
@@ -84,18 +87,18 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 		{ 0,1,0 },
 		{ 0,1,0 },
 		{ 0,1,0 },//
-		{ 0,0,1 },
-		{ 0,0,1 },
-		{ 0,0,1 },
-		{ 0,0,1 },//
-		{ 1,0,1 },
-		{ 1,0,1 },
-		{ 1,0,1 },
-		{ 1,0,1 },//
 		{ 0,1,1 },
 		{ 0,1,1 },
 		{ 0,1,1 },
 		{ 0,1,1 },//
+		{ 1,0,1 },
+		{ 1,0,1 },
+		{ 1,0,1 },
+		{ 1,0,1 },//
+		{ 0,0,1 },
+		{ 0,0,1 },
+		{ 0,0,1 },
+		{ 0,0,1 },//
 		{ 1,1,1 },
 		{ 1,1,1 },
 		{ 1,1,1 },
@@ -121,7 +124,7 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	cameraMatrix = glGetUniformLocation(program, "camera_matrix");
 	projMatrixLoc = glGetUniformLocation(program, "proj_matrix");
 
-	glm::mat4 proj = glm::perspective(45.0f, 512.0f / 512.0f, 0.1f, 100.0f);
+	glm::mat4 proj = glm::perspective(45.0f, screenWidth / screenHeight, 0.1f, 100.0f);
 	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &proj[0][0]);
 }
 
@@ -161,7 +164,7 @@ void OpenGLWindow::renderModel(Model * model)
 }
 
 float i = 0.0f;
-void OpenGLWindow::testDraw(glm::vec3 pos, int c)
+void OpenGLWindow::testDraw(glm::vec3 pos, int c, glm::vec3 cam)
 {
 	i += 0.0005f;
 	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw Start");
@@ -170,9 +173,9 @@ void OpenGLWindow::testDraw(glm::vec3 pos, int c)
 	glm::mat4 model_view = glm::translate(glm::mat4(1.0), pos);
 	//model_view = glm::rotate(model_view, i, glm::vec3(0.0f, 1.0f, 0.0f));
 	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view[0][0]);
-
-	glm::mat4 cam = glm::lookAt(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0, 0, 0.0f), glm::vec3(0.0f, 1.0f, 1.0f));
-	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &cam[0][0]);
+	glm::vec3 tar = cam - glm::vec3(0, 2.0f, 5.0f);
+	glm::mat4 camMat = glm::lookAt(cam, tar, glm::vec3(0.0f, 1.0f, 1.0f));
+	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &camMat[0][0]);
 
 	glDrawArrays(GL_QUADS, 4 * c, NumVertices);
 	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw End");

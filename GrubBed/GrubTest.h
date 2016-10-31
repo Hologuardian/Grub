@@ -5,6 +5,7 @@
 class GrubTest : public Grub
 {
 public:
+	GrubTest();
 	void Update(float Delta);
 	void Render();
 };
