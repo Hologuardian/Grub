@@ -5,11 +5,6 @@
 template<typename T> class Resource
 {
 public:
-	static T LoadResource(std::string file)
-	{
-		return Load(file);
-	}
-protected:
 	virtual T Load(std::string file) = 0;
 };
 

@@ -6,12 +6,12 @@ OpenGLWindow::OpenGLWindow()
 }
 
 enum VAO_IDs { Triangles, NumVAOs };
-enum Buffer_IDs { ArrayBuffer, NumBuffers };
+enum Buffer_IDs { VertexBuffer, ColorBuffer, TextureBuffer};
 enum Attrib_IDs { vPosition = 0 };
 
 GLuint VAOs[NumVAOs];
-GLuint Buffers[NumBuffers];
-GLuint location;
+GLuint Buffers[3];
+GLuint modelMatrix;
 GLuint cameraMatrix; 
 GLuint projMatrixLoc;
 const GLuint NumVertices = 24;
@@ -36,8 +36,9 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 		{ GL_NONE, NULL }
 	};
 
-	GLuint program = LoadShaders(shaders);
+	program = LoadShaders(shaders);
 	glUseProgram(program);
+	camera = new GLCamera(glm::vec3(0.0f, 8.0f, 38.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1.0f, 0), program);
 
 	GLfloat vertices[NumVertices][3] = {
 		//{ -0.10,  0, -0.10 }, // Square
@@ -48,30 +49,30 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 		//{ 0.1, 0, -0.10 },
 		//{ 0.10, 0, 0.10 },
 		//{ -0.1, 0, 0.10 }
-		{ 0.1,0.1,-0.1 },
-		{ 0.1,0.1,0.1 },
-		{ -0.1,0.1,0.1 },
-		{ -0.1,0.1,-0.1 },//
-		{ 0.1,-0.1,-0.1 },
-		{ 0.1,-0.1,0.1 },
-		{ -0.1,-0.1,0.1 },
-		{ -0.1,-0.1,-0.1 },//
-		{ 0.1,-0.1,0.1 },
-		{ 0.1,0.1,0.1 },
-		{ 0.1,0.1,-0.1 },
-		{ 0.1,-0.1,-0.1 },//
-		{ -0.1,-0.1,0.1 },
-		{ -0.1,0.1,0.1 },
-		{ -0.1,0.1,-0.1 },
-		{ -0.1,-0.1,-0.1 },//
-		{ -0.1,0.1,0.1 },
-		{ 0.1,0.1,0.1 },
-		{ 0.1,-0.1,0.1 },
-		{ -0.1,-0.1,0.1 },//
-		{ -0.1,0.1,-0.1 },
-		{ 0.1,0.1,-0.1 },
-		{ 0.1,-0.1,-0.1 },
-		{ -0.1,-0.1,-0.1 }//
+		{ 0.2,0.2,-0.2 },
+		{ 0.2,0.2,0.2 },
+		{ -0.2,0.2,0.2 },
+		{ -0.2,0.2,-0.2 },//
+		{ 0.2,-0.2,-0.2 },
+		{ 0.2,-0.2,0.2 },
+		{ -0.2,-0.2,0.2 },
+		{ -0.2,-0.2,-0.2 },//
+		{ 0.2,-0.2,0.2 },
+		{ 0.2,0.2,0.2 },
+		{ 0.2,0.2,-0.2 },
+		{ 0.2,-0.2,-0.2 },//
+		{ -0.2,-0.2,0.2 },
+		{ -0.2,0.2,0.2 },
+		{ -0.2,0.2,-0.2 },
+		{ -0.2,-0.2,-0.2 },//
+		{ -0.2,0.2,0.2 },
+		{ 0.2,0.2,0.2 },
+		{ 0.2,-0.2,0.2 },
+		{ -0.2,-0.2,0.2 },//
+		{ -0.2,0.2,-0.2 },
+		{ 0.2,0.2,-0.2 },
+		{ 0.2,-0.2,-0.2 },
+		{ -0.2,-0.2,-0.2 }//
 	};
 
 	GLfloat colorData[NumVertices][3] = {
@@ -102,27 +103,70 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 		{ 1,1,1 },
 		{ 1,1,1 },
 		{ 1,1,1 },
-		{ 1,1,1 }//
+		{ 1,1,1 },//
+		{ 1,0,0 },
+		{ 1,0,0 },
+		{ 1,0,0 },
+		{ 1,0,0 }//
 	};
 
-	glGenBuffers(2, Buffers);
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]);
+	GLfloat texCoords[NumVertices][2] = {
+		//{ 0,1,0 },
+		//{ 0,1,0 },
+		//{ 0,1,0 },
+		//{ 0,1,0 },//
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 },
+		//{ 0,0.8f,0 }//
+		{ 0,1 },
+		{ 0,1 },
+		{ 0,1 },
+		{ 0,1 },//
+		{ 0,1 },
+		{ 0,1 },
+		{ 0,1 },
+		{ 0,1 },//
+		{ 1,0 },
+		{ 1,0 },
+		{ 1,0 },
+		{ 1,0 },//
+		{ 0,0 },
+		{ 0,0 },
+		{ 0,0 },
+		{ 0,0 },//
+		{ 1,1 },
+		{ 1,1 },
+		{ 1,1 },
+		{ 1,1 },//
+		{ 1,1 },
+		{ 1,1 },
+		{ 1,1 },
+		{ 1,1 }//
+	};
+
+	glGenBuffers(3, Buffers);
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[VertexBuffer]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBindAttribLocation(program, 0, "vPosition");
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 	glEnableVertexAttribArray(0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[ColorBuffer]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData, GL_STATIC_DRAW);
 	glBindAttribLocation(program, 1, "vertexColor");
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 	glEnableVertexAttribArray(1);
+
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[TextureBuffer]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(texCoords), texCoords, GL_STATIC_DRAW);
+	glBindAttribLocation(program, 2, "vTexture");
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glEnableVertexAttribArray(0);
 	
 
 
-	location = glGetUniformLocation(program, "model_matrix");
-	cameraMatrix = glGetUniformLocation(program, "camera_matrix");
-	projMatrixLoc = glGetUniformLocation(program, "proj_matrix");
+	modelMatrix = glGetUniformLocation(program, "model_matrix");
 
 	glm::mat4 proj = glm::perspective(45.0f, screenWidth / screenHeight, 0.1f, 100.0f);
 	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &proj[0][0]);
@@ -158,13 +202,13 @@ void OpenGLWindow::renderModel(Model * model)
 
 	glm::mat4 model_view = model->modelMatrix;
 
-	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view[0][0]);
+	glUniformMatrix4fv(modelMatrix, 1, GL_FALSE, &model_view[0][0]);
 
-	glDrawArrays(GL_TRIANGLES, 0, model->vertexCount);
+	//glDrawArrays(GL_TRIANGLES, 0, model->vertexCount);
 }
 
 float i = 0.0f;
-void OpenGLWindow::testDraw(glm::vec3 pos, int c, glm::vec3 cam)
+void OpenGLWindow::testDraw(glm::vec3 pos, int c)
 {
 	i += 0.0005f;
 	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw Start");
@@ -172,10 +216,7 @@ void OpenGLWindow::testDraw(glm::vec3 pos, int c, glm::vec3 cam)
 
 	glm::mat4 model_view = glm::translate(glm::mat4(1.0), pos);
 	//model_view = glm::rotate(model_view, i, glm::vec3(0.0f, 1.0f, 0.0f));
-	glUniformMatrix4fv(location, 1, GL_FALSE, &model_view[0][0]);
-	glm::vec3 tar = cam - glm::vec3(0, 2.0f, 5.0f);
-	glm::mat4 camMat = glm::lookAt(cam, tar, glm::vec3(0.0f, 1.0f, 1.0f));
-	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &camMat[0][0]);
+	glUniformMatrix4fv(modelMatrix, 1, GL_FALSE, &model_view[0][0]);
 
 	glDrawArrays(GL_QUADS, 4 * c, NumVertices);
 	Logger::Log(EMessageType::LOG_UPDATE, "Test Draw End");

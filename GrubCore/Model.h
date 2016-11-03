@@ -1,29 +1,26 @@
 #ifndef GRUB_MODEL_H
 #define GRUB_MODEL_H
-#include "Vertex.h"
+#include "SimpleVertex.h"
+#include "Resource.h"
 #include <string>
-#include "glm\glm\glm.hpp"
+#include "Material.h"
+#include "Constants.h"
 
-typedef Vertex vert;
-typedef glm::mat4 matrix;
-
-class Model
+class Model : public Resource<Model>
 {
 public:
-	Model(vert vertices[])
-	{
-		Model::vertices = vertices;
-		vertexCount = sizeof(vertices) / sizeof(vert);
-	}
+	Matrix modelMatrix;
+	Material* material;
 
-	vert* vertices;
-	int vertexCount;
-	matrix modelMatrix;
+	Model Load(std::string File) override
+	{
+		material->Load("");
+	}
 
 	~Model()
 	{
-		delete vertices;
-		vertices = nullptr;
+		delete material;
+		material = nullptr;
 	}
 };
 

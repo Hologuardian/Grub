@@ -1,1 +1,5 @@
-﻿  GrubCore.vcxproj -> D:\Dev\C++\Grub\Debug\GrubCore.lib
+﻿  OpenGLWindow.cpp
+d:\dev\c++\grub\grubcore\openglwindow.cpp(25): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\dev\c++\grub\grubcore\openglwindow.cpp(76): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+d:\dev\c++\grub\grubcore\openglwindow.cpp(76): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  GrubCore.vcxproj -> D:\Dev\C++\Grub\Debug\GrubCore.lib

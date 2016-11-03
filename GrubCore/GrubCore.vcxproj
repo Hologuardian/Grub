@@ -119,7 +119,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractWindow.cpp" />
+    <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -129,8 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Chunk.h" />
     <ClInclude Include="Clock.h" />
-    <ClInclude Include="Image.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="GLCamera.h" />
     <ClInclude Include="LoadShaders.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Grub.h" />
@@ -139,8 +145,11 @@
     <ClInclude Include="OpenGLWindow.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SimpleModel.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureVertex.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="SimpleVertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
