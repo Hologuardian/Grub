@@ -18,9 +18,11 @@ public:
 	GLCamera* camera;
 	OpenGLWindow();
 	~OpenGLWindow();
-	void MakeWindow(int argc, char** argv);
-	void SetUpdate(void (UpdateCallBack)());
-	void SetDisplay(void (Display)());
+	void MakeWindow(int argc, char** argv) override;
+	void SetUpdate(void (UpdateCallBack)()) override;
+	void SetDisplay(void (Display)()) override;
+	void SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y)) override;
+public:
 	void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length);
 	void renderModel(Model* model);
 	void testDraw(glm::vec3 pos, int c);

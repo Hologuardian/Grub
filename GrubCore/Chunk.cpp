@@ -45,30 +45,30 @@ void Chunk::Buffer(Grubuint program)
 				//Logger::Log(EMessageType::LOG_INFO, "" + std::to_string(c));
 				if (c > 0)
 				{
-					positions[x + y + z + 0] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //0
-					positions[x + y + z + 1] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //1
-					positions[x + y + z + 2] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //2
-					positions[x + y + z + 3] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //3
-					positions[x + y + z + 4] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //4
-					positions[x + y + z + 5] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //5
-					positions[x + y + z + 6] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //6
-					positions[x + y + z + 7] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //7
-					positions[x + y + z + 8] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //8
-					positions[x + y + z + 9] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //9
-					positions[x + y + z + 10] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //10
-					positions[x + y + z + 11] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //11
-					positions[x + y + z + 12] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //12
-					positions[x + y + z + 13] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //13
-					positions[x + y + z + 14] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //14
-					positions[x + y + z + 15] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //15
-					positions[x + y + z + 16] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //16
-					positions[x + y + z + 17] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //17
-					positions[x + y + z + 18] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //18
-					positions[x + y + z + 19] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) + 0.5); //19
-					positions[x + y + z + 20] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //20
-					positions[x + y + z + 21] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //21
-					positions[x + y + z + 22] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //22
-					positions[x + y + z + 23] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 0.5, (j +ChunkZ * ChunkWidth) - 0.5); //23
+					positions[x + y + z + 0] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //0
+					positions[x + y + z + 1] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //1
+					positions[x + y + z + 2] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //2
+					positions[x + y + z + 3] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //3
+					positions[x + y + z + 4] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //4
+					positions[x + y + z + 5] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //5
+					positions[x + y + z + 6] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //6
+					positions[x + y + z + 7] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //7
+					positions[x + y + z + 8] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //8
+					positions[x + y + z + 9] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //9
+					positions[x + y + z + 10] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //10
+					positions[x + y + z + 11] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //11
+					positions[x + y + z + 12] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //12
+					positions[x + y + z + 13] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //13
+					positions[x + y + z + 14] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //14
+					positions[x + y + z + 15] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //15
+					positions[x + y + z + 16] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //16
+					positions[x + y + z + 17] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //17
+					positions[x + y + z + 18] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //18
+					positions[x + y + z + 19] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) + 0.5); //19
+					positions[x + y + z + 20] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //20
+					positions[x + y + z + 21] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k + 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //21
+					positions[x + y + z + 22] = Vector3((i + ChunkX * ChunkWidth) + 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //22
+					positions[x + y + z + 23] = Vector3((i + ChunkX * ChunkWidth) - 0.5, k - 2.5, (j +ChunkZ * ChunkWidth) - 0.5); //23
 					for (int n = 0; n < 24; n++)
 					{
 						//Logger::Log(EMessageType::LOG_INFO, "" + std::to_string(positions[x + y + z + n][0]) + "," + std::to_string(positions[x + y + z + n][1]) + "," + std::to_string(positions[x + y + z + n][2]) + "," + std::to_string(m));

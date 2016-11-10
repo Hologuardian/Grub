@@ -12,7 +12,12 @@ typedef glm::vec3 Vector3;
 typedef glm::vec4 Vector4;
 typedef GLuint Grubuint;
 
-const int ChunkWidth = 32;
+const float screenWidth = 1520;
+const float screenHeight = 790;
+const float halfScreenWidth = screenWidth / 2;
+const float halfScreenHeight = screenHeight / 2;
+
+const int ChunkWidth = 16;
 const int ChunkHeight = 96;
 const int ChunkSize = ChunkWidth * ChunkWidth * ChunkHeight;
 const int BufferCount = 2;

@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractWindow.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="GLCamera.cpp" />
@@ -126,7 +127,6 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="OpenGLWindow.cpp" />
     <ClCompile Include="Timer.cpp" />

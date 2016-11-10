@@ -1,11 +1,15 @@
 #include "Grub.h"
-#include "LoadShaders.h"
 
 const GLuint NumVertices = 12;
 
-Grub::Grub()
+Grub::Grub(int argc, char** argv)
 {
 	window = new OpenGLWindow();
+	window->MakeWindow(argc, argv);
+	window->SetUpdate(Grub::Update);
+	window->SetDisplay(Grub::Display);
+	window->SetInput(Input::KeyboardDownFunc, Input::KeyboardUpFunc, Input::ClickFunc, Input::MoveFunc, Input::DragFunc);
+	Input::LockPointer = false;
 }
 
 Grub::~Grub()

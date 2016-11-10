@@ -1,6 +1,7 @@
 #ifndef GRUB_GRUB_H
 #define GRUB_GRUB_H
 
+#include "Input.h"
 #include <stdio.h>
 #include "Clock.h"
 #include "Logger.h"
@@ -11,7 +12,7 @@ class Grub
 public:
 	static Grub* instance;
 public:
-	Grub();
+	Grub(int argc, char** argv);
 	~Grub();
 	OpenGLWindow* window;
 	virtual void Update(float delta) = 0;

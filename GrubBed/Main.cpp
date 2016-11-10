@@ -5,12 +5,9 @@ Grub* NewGame;
 
 int main(int argc, char** argv) {
 	Clock::init();
-	NewGame = new GrubTest();
+	NewGame = new GrubTest(argc, argv);
 	Grub::instance = NewGame;
 	OpenGLWindow* window = NewGame->window;
-	window->MakeWindow(argc, argv);
-	window->SetUpdate(Grub::Update);
-	window->SetDisplay(Grub::Display);
 	NewGame->Initialize();
 	while (true)
 		;

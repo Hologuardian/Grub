@@ -14,9 +14,6 @@ GLuint Buffers[3];
 GLuint modelMatrix;
 GLuint cameraMatrix; 
 GLuint projMatrixLoc;
-const GLuint NumVertices = 24;
-const float screenWidth = 1520;
-const float screenHeight = 790;
 
 void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInit(&argc, argv);
@@ -24,6 +21,7 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(screenWidth, screenHeight);
 	glutInitWindowPosition(0, 0);
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glutCreateWindow("Grub");
 
 	glewInit();
@@ -38,7 +36,7 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 
 	program = LoadShaders(shaders);
 	glUseProgram(program);
-	camera = new GLCamera(glm::vec3(64.0f, 84.0f, 100.0f), glm::vec3(80, 0, 80), glm::vec3(0, 1.0f, 0), program);
+	camera = new GLCamera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 1.0f, 0), program);
 
 	modelMatrix = glGetUniformLocation(program, "model_matrix");
 }
@@ -46,6 +44,16 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 void OpenGLWindow::SetDisplay(void (Display)()) {
 	Logger::Log(EMessageType::LOG_INFO, "Setting display function");
 	glutDisplayFunc(Display);
+}
+
+void OpenGLWindow::SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting input function");
+	glutKeyboardFunc(KeyboardDown);
+	glutKeyboardUpFunc(KeyboardUp);
+	glutMouseFunc(Click);
+	glutPassiveMotionFunc(Move);
+	glutMotionFunc(Drag);
 }
 
 void OpenGLWindow::SetUpdate(void (UpdateCallBack)()) {

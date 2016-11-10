@@ -16,6 +16,11 @@ public:
 	};
 	Grubuint program;
 	virtual ~AbstractWindow();
+	virtual void MakeWindow(int argc, char** argv) = 0;
+	virtual void SetUpdate(void (UpdateCallBack)()) = 0;
+	virtual void SetDisplay(void (Display)()) = 0;
+	virtual void SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y)) = 0;
+public:
 	virtual void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length) = 0;
 	virtual void renderModel(Model* model) = 0;
 	virtual void startRender() = 0;
