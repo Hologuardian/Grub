@@ -15,18 +15,19 @@
 class OpenGLWindow: public AbstractWindow
 {
 public:
-	GLuint program;
 	GLCamera* camera;
 	OpenGLWindow();
 	~OpenGLWindow();
 	void MakeWindow(int argc, char** argv);
 	void SetUpdate(void (UpdateCallBack)());
 	void SetDisplay(void (Display)());
-	void renderPrimitive(PrimativeType prim);
+	void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length);
 	void renderModel(Model* model);
 	void testDraw(glm::vec3 pos, int c);
 	void startRender();
 	void endRender();
+	void begin();
+	Camera* GetCamera();
 };
 
 #endif

@@ -16,6 +16,7 @@ public:
 	OpenGLWindow* window;
 	virtual void Update(float delta) = 0;
 	virtual void Render() = 0;
+	virtual void Initialize() = 0;
 public:
 	static void Display();
 	static void Update();

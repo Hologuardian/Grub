@@ -11,6 +11,7 @@ int main(int argc, char** argv) {
 	window->MakeWindow(argc, argv);
 	window->SetUpdate(Grub::Update);
 	window->SetDisplay(Grub::Display);
+	NewGame->Initialize();
 	while (true)
 		;
 	getchar();

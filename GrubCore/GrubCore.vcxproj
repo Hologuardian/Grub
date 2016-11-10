@@ -122,6 +122,8 @@
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="GLCamera.cpp" />
+    <ClCompile Include="GLChunkRenderer.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -133,10 +135,13 @@
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Chunk.h" />
+    <ClInclude Include="ChunkRenderer.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GLCamera.h" />
+    <ClInclude Include="GLChunkRenderer.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="LoadShaders.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Grub.h" />

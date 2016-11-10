@@ -4,7 +4,7 @@ GLCamera::GLCamera(Vector3 position, Vector3 lookAt, Vector3 up, GLuint program)
 {
 	cameraMatrix = glGetUniformLocation(program, "camera_matrix");
 	projMatrixLoc = glGetUniformLocation(program, "proj_matrix");
-	Persepective(75.0f, 1.777778f, 0.1f, 100.0f);
+	Persepective(45.0f, 1.777778f, 0.1f, 10000.0f);
 	Move(position);
 	Look(lookAt, up);
 }
@@ -30,6 +30,15 @@ void GLCamera::Ortho(float top, float bottom, float left, float right, float nea
 void GLCamera::Move(Vector3 position)
 {
 	view = glm::translate(view, position);
+	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &view[0][0]);
+
+}
+void GLCamera::SetPosition(Vector3 position)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		view[3][i] = position[i];
+	}
 	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &view[0][0]);
 
 }

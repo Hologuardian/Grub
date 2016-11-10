@@ -8,6 +8,7 @@ public:
 	GrubTest();
 	void Update(float Delta);
 	void Render();
+	void Initialize();
 };
 
 #endif
