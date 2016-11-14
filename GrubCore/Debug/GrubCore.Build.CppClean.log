@@ -8,10 +8,10 @@ d:\dev\c++\grub\grubcore\debug\glchunkrenderer.obj
 d:\dev\c++\grub\grubcore\debug\input.obj
 d:\dev\c++\grub\grubcore\debug\loadshaders.obj
 d:\dev\c++\grub\grubcore\debug\logger.obj
-d:\dev\c++\grub\grubcore\debug\main.obj
 d:\dev\c++\grub\grubcore\debug\grub.obj
 d:\dev\c++\grub\grubcore\debug\openglwindow.obj
 d:\dev\c++\grub\grubcore\debug\timer.obj
+d:\dev\c++\grub\grubcore\debug\camera.obj
 d:\dev\c++\grub\debug\grubcore.lib
 d:\dev\c++\grub\debug\grubcore.pdb
 d:\dev\c++\grub\grubcore\debug\grubcore.tlog\cl.command.1.tlog

@@ -4,14 +4,16 @@
   OpenGLWindow.cpp
 d:\dev\c++\grub\grubcore\openglwindow.cpp(22): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
   Input.cpp
-d:\dev\c++\grub\grubcore\input.cpp(46): warning C4018: '<': signed/unsigned mismatch
-d:\dev\c++\grub\grubcore\input.cpp(57): warning C4018: '<': signed/unsigned mismatch
-d:\dev\c++\grub\grubcore\input.cpp(68): warning C4018: '<': signed/unsigned mismatch
-d:\dev\c++\grub\grubcore\input.cpp(79): warning C4018: '<': signed/unsigned mismatch
-d:\dev\c++\grub\grubcore\input.cpp(90): warning C4018: '<': signed/unsigned mismatch
+d:\dev\c++\grub\grubcore\input.cpp(47): warning C4018: '<': signed/unsigned mismatch
+d:\dev\c++\grub\grubcore\input.cpp(58): warning C4018: '<': signed/unsigned mismatch
+d:\dev\c++\grub\grubcore\input.cpp(69): warning C4018: '<': signed/unsigned mismatch
+d:\dev\c++\grub\grubcore\input.cpp(80): warning C4018: '<': signed/unsigned mismatch
+d:\dev\c++\grub\grubcore\input.cpp(91): warning C4018: '<': signed/unsigned mismatch
   Grub.cpp
 d:\dev\c++\grub\grubcore\grub.cpp(34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   GLChunkRenderer.cpp
+d:\dev\c++\grub\grubcore\glchunkrenderer.h(20): warning C4114: same type qualifier used more than once
+d:\dev\c++\grub\grubcore\glchunkrenderer.cpp(3): warning C4114: same type qualifier used more than once
   GLCamera.cpp
   Chunk.cpp
   Camera.cpp

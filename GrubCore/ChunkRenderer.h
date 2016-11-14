@@ -2,12 +2,13 @@
 #define GRUB_CHUNKRENDERER
 #include "Constants.h"
 #include "AbstractWindow.h"
+#include<vector>
 
 class ChunkRenderer
 {
 public:
 	virtual void Render(AbstractWindow* window) = 0;
-	virtual void RegisterQuads(Vector3 points[], Vector3 Colors[], Grubuint program) = 0;
+	virtual void RegisterQuads(const std::vector<Vector3>* const points, const std::vector<Vector3>* const Colors) = 0;
 };
 
 #endif

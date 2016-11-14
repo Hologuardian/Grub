@@ -23,6 +23,7 @@ void OpenGLWindow::MakeWindow(int argc,char** argv) {
 	glutInitWindowPosition(0, 0);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glutCreateWindow("Grub");
+	//glutFullScreen();
 
 	glewInit();
 	

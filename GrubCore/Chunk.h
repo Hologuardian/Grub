@@ -4,21 +4,24 @@
 #include "Constants.h"
 #include "Resource.h"
 #include "ChunkRenderer.h"
+#include <vector>
 
 class Chunk : public Resource<Chunk>
 {
 public:
 	int ChunkX;
 	int ChunkZ;
-	float*** ChunkData;
+	std::vector<float>* ChunkData;
 	ChunkRenderer* chunkRender;
-
+	std::vector<Vector3>* pos;
+	std::vector<Vector3>* colors;
 public:
 	Chunk() = delete;
 	Chunk(int x, int z, ChunkRenderer* renderer);
 	Chunk Load(std::string File) override;
 	void Render(AbstractWindow* window);
-	void Buffer(Grubuint program);
+	void Initialize();
+	void Buffer();
 	~Chunk();
 };
 

@@ -8,6 +8,7 @@ class Input
 {
 public:
 	Input() = delete;
+	static bool warped;
 	static bool LockPointer;
 	static void HideCursor(bool hide);
 	static void ListenForKeyDown(void(*callback)(unsigned char key));

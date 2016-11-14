@@ -1,9 +1,13 @@
 ﻿  GrubTest.cpp
-d:\dev\c++\grub\grubbed\grubtest.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(134): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(135): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(143): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(144): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubcore\glchunkrenderer.h(20): warning C4114: same type qualifier used more than once
+d:\dev\c++\grub\grubbed\grubtest.cpp(11): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(158): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(192): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(193): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(204): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(205): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 GrubCore.lib(OpenGLWindow.obj) : warning LNK4217: locally defined symbol _glewInit@0 imported in function "public: virtual void __thiscall OpenGLWindow::MakeWindow(int,char * *)" (?MakeWindow@OpenGLWindow@@UAEXHPAPAD@Z)
 GrubCore.lib(OpenGLWindow.obj) : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
 GrubCore.lib(GLCamera.obj) : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
@@ -14,10 +18,12 @@ GrubCore.lib(OpenGLWindow.obj) : warning LNK4049: locally defined symbol ___glew
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBindBuffer imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBufferData imported
+GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewDeleteBuffers imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewGenBuffers imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBindAttribLocation imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewEnableVertexAttribArray imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewDeleteVertexArrays imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
 glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'glew_static_vs2010_d.lib(glew.obj)' or at 'D:\Dev\C++\Grub\Debug\vc100.pdb'; linking object as if no debug info
   GrubBed.vcxproj -> D:\Dev\C++\Grub\Debug\GrubBed.exe

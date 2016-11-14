@@ -5,6 +5,7 @@ std::vector<void(*)(unsigned char key)> Input::KeyUpCallbacks;
 std::vector<void(*)(int button, int state, int x, int y)> Input::ClickCallbacks;
 std::vector<void(*)(int x, int y)> Input::MoveCallbacks;
 std::vector<void(*)(int x, int y)> Input::DragCallbacks;
+bool Input::warped = false;
 
 bool Input::LockPointer;
 
@@ -119,8 +120,6 @@ void Input::ClickFunc(int button, int state, int x, int y)
 		callback(button, state, x, y);
 	}
 }
-
-bool warped = false;
 
 void Input::MoveFunc(int x, int y)
 {

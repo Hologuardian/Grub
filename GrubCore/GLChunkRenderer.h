@@ -16,9 +16,11 @@ class GLChunkRenderer : public ChunkRenderer
 public:
 	GLuint ChunkVAO;
 	GLuint ChunkBuffers[BufferCount];
-	GLChunkRenderer();
+	int length;
+	GLChunkRenderer(const Grubuint const program);
 	void Render(AbstractWindow* window);
-	void RegisterQuads(Vector3 Points[], Vector3 Colors[], Grubuint program);
+	void RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors);
+	~GLChunkRenderer();
 };
 
 #endif

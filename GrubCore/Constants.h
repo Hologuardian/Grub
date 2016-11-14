@@ -17,8 +17,12 @@ const float screenHeight = 790;
 const float halfScreenWidth = screenWidth / 2;
 const float halfScreenHeight = screenHeight / 2;
 
+const float MouseSensitivity = 0.0075f;
+
 const int ChunkWidth = 16;
-const int ChunkHeight = 96;
+const int ChunkHeight = 64;
+const float BlockWidth = 1.0f;
+const float BlockHeight = 1.0f;
 const int ChunkSize = ChunkWidth * ChunkWidth * ChunkHeight;
 const int BufferCount = 2;
 
