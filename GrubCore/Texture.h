@@ -2,6 +2,7 @@
 #define GRUB_TEXTURE
 #include "Resource.h"
 #include "TextureVertex.h"
+#include <Vector>
 
 class Texture : public Resource<Texture>
 {
