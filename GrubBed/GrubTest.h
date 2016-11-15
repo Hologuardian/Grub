@@ -23,7 +23,8 @@ public:
 	std::mt19937* gen;
 	std::uniform_int_distribution<>* dis;
 	FastNoise* noise;
-	const int numChunkWidth = 40;
+	const int numChunkWidth = 60;
+	const int largeChunk = 15;
 	std::vector<Chunk*> chunkList;
 	static std::vector<Chunk*> c;
 	static std::queue<Chunk*> generatedChunks;

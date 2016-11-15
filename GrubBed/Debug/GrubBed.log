@@ -3,11 +3,11 @@ d:\dev\c++\grub\grubcore\glchunkrenderer.h(20): warning C4114: same type qualifi
 d:\dev\c++\grub\grubbed\grubtest.cpp(11): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
 d:\dev\c++\grub\grubbed\grubtest.cpp(13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 d:\dev\c++\grub\grubbed\grubtest.cpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(158): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(157): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(191): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 d:\dev\c++\grub\grubbed\grubtest.cpp(192): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(193): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(203): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 d:\dev\c++\grub\grubbed\grubtest.cpp(204): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(205): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 GrubCore.lib(OpenGLWindow.obj) : warning LNK4217: locally defined symbol _glewInit@0 imported in function "public: virtual void __thiscall OpenGLWindow::MakeWindow(int,char * *)" (?MakeWindow@OpenGLWindow@@UAEXHPAPAD@Z)
 GrubCore.lib(OpenGLWindow.obj) : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
 GrubCore.lib(GLCamera.obj) : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported

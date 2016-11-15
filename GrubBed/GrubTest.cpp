@@ -37,7 +37,6 @@ void GrubTest::PreGenerate()
 	}
 	GrubTest::c.clear();
 	noise->SetSeed(Clock::getCurrentTime());
-	int largeChunk = 10;
 	int nSet = 0;
 	int mSet = 0;
 	int width = ((GrubTest*)instance)->numChunkWidth;
@@ -69,6 +68,7 @@ void GrubTest::Generate()
 		if (requestedChunks.size() > 0)
 		{
 			Chunk* toGen = requestedChunks.front();
+			requestedChunks.pop();
 			int m = toGen->ChunkZ;
 			int n = toGen->ChunkX;
 			FastNoise* noise = ((GrubTest*)instance)->noise;
@@ -76,9 +76,9 @@ void GrubTest::Generate()
 			{
 				for (int j = 0; j < ChunkWidth; j++)
 				{
-					float noiseH = (noise->GetNoise((i + ChunkWidth * n) * 2.0f, (j + ChunkWidth * m) * 2.0f) * 0.5f + 0.5f) * (float)ChunkHeight;
-					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 1.0f, (j + ChunkWidth * m) * 1.0f) * 0.25f + 0.75f);
-					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 0.25f, (j + ChunkWidth * m) * 0.25f) * 0.5f + 0.5f);
+					float noiseH = (noise->GetNoise((i + ChunkWidth * n) * 2.0f, (j + ChunkWidth * m) * 2.0f) * 0.5f + 0.5f) * (float)ChunkHeight * 0.25f;
+					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 1.0f, (j + ChunkWidth * m) * 1.0f) * 0.5f + 0.5f);
+					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 0.25f, (j + ChunkWidth * m) * 0.25f) * 0.25f + 0.75f);
 					for (int k = 0; k < ChunkHeight; k++)
 					{
 						if (noiseH >= k - 2 && noiseH <= k)
@@ -92,7 +92,6 @@ void GrubTest::Generate()
 				}
 			}
 			toGen->Initialize();
-			requestedChunks.pop();
 			generatedChunks.push(toGen);
 		}
 	}
