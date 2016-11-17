@@ -121,6 +121,7 @@
     <ClCompile Include="AbstractWindow.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chunk.cpp" />
+    <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
@@ -133,8 +134,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Chunk.h" />
+    <ClInclude Include="ChunkGenerator.h" />
+    <ClInclude Include="ChunkManager.h" />
     <ClInclude Include="ChunkRenderer.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Color.h" />

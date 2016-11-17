@@ -1,16 +1,13 @@
 #include "GrubTest.h"
 #include "FastNoise/FastNoise.cpp"
 
-std::vector<Chunk*> GrubTest::c;
-std::queue<Chunk*> GrubTest::requestedChunks;
-std::queue<Chunk*> GrubTest::generatedChunks;
 bool GrubTest::doneGen = false;
 
 GrubTest::GrubTest(int argc, char** argv) : Grub(argc, argv)
 {
+	ChunkManager::Initialize();
 	gen = new std::mt19937(0.0f);
 	dis = new std::uniform_int_distribution<>(0, 1000);
-	noise = new FastNoise((Clock::getCurrentTime()));
 
 	Input::ListenForKeyDown(Keyboard);
 	Input::ListenForKeyUp(KeyboardUp);
@@ -22,21 +19,18 @@ GrubTest::GrubTest(int argc, char** argv) : Grub(argc, argv)
 
 void GrubTest::Initialize()
 {
-	Vector3 position = Vector3(-64, 512, -64);
+	Vector3 position = Vector3(480, 512, -292);
 	window->GetCamera()->Move(position);
+	cameraAngleX = glm::half_pi<float>();
+	cameraAngleY = glm::quarter_pi<float>();
 	PreGenerate();
 	window->begin();
 }
 
 void GrubTest::PreGenerate()
 {
-	for each(Chunk* chunk in GrubTest::c)
-	{
-		delete chunk;
-		chunk = nullptr;
-	}
-	GrubTest::c.clear();
-	noise->SetSeed(Clock::getCurrentTime());
+	ChunkManager::SetSeed(Clock::getCurrentTime());
+	ChunkManager::Clear();
 	int nSet = 0;
 	int mSet = 0;
 	int width = ((GrubTest*)instance)->numChunkWidth;
@@ -48,52 +42,13 @@ void GrubTest::PreGenerate()
 			{
 				for (int m = mSet; m < glm::min(mSet + largeChunk, width); m++)
 				{
-					GrubTest::requestedChunks.push(new Chunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program)));
+					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program));
 				}
 			}
 			nSet += largeChunk;
 		}
 		nSet = 0;
 		mSet += largeChunk;
-	}
-	generationThread = std::thread(Generate);
-	generationThread.detach();
-}
-
-
-void GrubTest::Generate()
-{
-	while (true)
-	{
-		if (requestedChunks.size() > 0)
-		{
-			Chunk* toGen = requestedChunks.front();
-			requestedChunks.pop();
-			int m = toGen->ChunkZ;
-			int n = toGen->ChunkX;
-			FastNoise* noise = ((GrubTest*)instance)->noise;
-			for (int i = 0; i < ChunkWidth; i++)
-			{
-				for (int j = 0; j < ChunkWidth; j++)
-				{
-					float noiseH = (noise->GetNoise((i + ChunkWidth * n) * 2.0f, (j + ChunkWidth * m) * 2.0f) * 0.5f + 0.5f) * (float)ChunkHeight * 0.25f;
-					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 1.0f, (j + ChunkWidth * m) * 1.0f) * 0.5f + 0.5f);
-					noiseH *= (noise->GetNoise((i + ChunkWidth * n) * 0.25f, (j + ChunkWidth * m) * 0.25f) * 0.25f + 0.75f);
-					for (int k = 0; k < ChunkHeight; k++)
-					{
-						if (noiseH >= k - 2 && noiseH <= k)
-						{
-							//float noiseC = noise.GetGradient((i + ChunkWidth * n) * 10.0f, (k)* 10.0f, (j + ChunkWidth * m) * 10.0f);
-							toGen->ChunkData->push_back((noiseH / (float)ChunkHeight) * 0.5f + 0.5f);
-						}
-						else
-							toGen->ChunkData->push_back(-1.0f);
-					}
-				}
-			}
-			toGen->Initialize();
-			generatedChunks.push(toGen);
-		}
 	}
 }
 
@@ -210,16 +165,7 @@ void GrubTest::MouseDrag(int x, int y)
 
 void GrubTest::Render()
 {
-	if (generatedChunks.size() > 0)
-	{
-		Chunk* chunk = generatedChunks.front();
-		chunk->Buffer();
-		GrubTest::c.push_back(chunk);
-		generatedChunks.pop();
-	}
 	window->startRender();
-	for each(Chunk* chunk in GrubTest::c)
-		chunk->Render(window);
-	window->testDraw(Vector3(0), 0);
+	ChunkManager::DrawChunks(window);
 	window->endRender();
 }

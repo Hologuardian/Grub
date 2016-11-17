@@ -1,5 +1,7 @@
 #include "Chunk.h"
 
+FastNoise Chunk::noise;
+
 Chunk::Chunk(int x, int z, ChunkRenderer* renderer)
 {
 	ChunkData = new std::vector<float>();
@@ -16,6 +18,31 @@ Chunk Chunk::Load(std::string File)
 void Chunk::Render(AbstractWindow* window)
 {
 	chunkRender->Render(window);
+}
+
+void Chunk::Generate()
+{
+	ChunkZ;
+	ChunkX;
+	for (int i = 0; i < ChunkWidth; i++)
+	{
+		for (int j = 0; j < ChunkWidth; j++)
+		{
+			float noiseH = (noise.GetNoise((i + ChunkWidth * ChunkX) * 2.0f, (j + ChunkWidth * ChunkZ) * 2.0f) * 0.5f + 0.5f) * (float)ChunkHeight * 0.25f;
+			noiseH *= (noise.GetNoise((i + ChunkWidth * ChunkX) * 1.0f, (j + ChunkWidth * ChunkZ) * 1.0f) * 0.5f + 0.5f);
+			//noiseH *= (noise.GetNoise((i + ChunkWidth * ChunkX) * 0.25f, (j + ChunkWidth * ChunkZ) * 0.25f) * 0.25f + 0.75f);
+			for (int k = 0; k < ChunkHeight; k++)
+			{
+				if (noiseH >= k - 2 && noiseH <= k)
+				{
+					//float noiseC = noise.GetGradient((i + ChunkWidth * n) * 10.0f, (k)* 10.0f, (j + ChunkWidth * m) * 10.0f);
+					ChunkData->push_back((noiseH / (float)ChunkHeight) * 0.5f + 0.5f);
+				}
+				else
+					ChunkData->push_back(-1.0f);
+			}
+		}
+	}
 }
 
 void Chunk::Initialize()
@@ -87,4 +114,8 @@ Chunk::~Chunk()
 	ChunkData = nullptr;
 	delete chunkRender;
 	chunkRender = nullptr;
+	delete pos;
+	pos = nullptr;
+	delete colors;
+	colors = nullptr;
 }

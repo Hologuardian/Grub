@@ -20,7 +20,7 @@ public:
 	GLChunkRenderer(const Grubuint const program);
 	void Render(AbstractWindow* window);
 	void RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors);
-	~GLChunkRenderer();
+	virtual ~GLChunkRenderer();
 };
 
 #endif

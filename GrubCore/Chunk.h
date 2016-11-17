@@ -5,6 +5,7 @@
 #include "Resource.h"
 #include "ChunkRenderer.h"
 #include <vector>
+#include "FastNoise/FastNoise.h"
 
 class Chunk : public Resource<Chunk>
 {
@@ -15,11 +16,13 @@ public:
 	ChunkRenderer* chunkRender;
 	std::vector<Vector3>* pos;
 	std::vector<Vector3>* colors;
+	static FastNoise noise;
 public:
 	Chunk() = delete;
 	Chunk(int x, int z, ChunkRenderer* renderer);
 	Chunk Load(std::string File) override;
 	void Render(AbstractWindow* window);
+	void Generate();
 	void Initialize();
 	void Buffer();
 	~Chunk();

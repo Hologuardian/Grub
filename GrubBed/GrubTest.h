@@ -2,11 +2,11 @@
 #define GRUB_GRUB_TEST_H
 #include "Grub.h"
 #include <random>
-#include "Chunk.h"
 #include "GLChunkRenderer.h"
 #include "FastNoise/FastNoise.h"
 #include <thread>  
 #include <queue>
+#include "ChunkManager.h"
 
 
 class GrubTest : public Grub
@@ -22,13 +22,8 @@ public:
 	std::random_device rd;
 	std::mt19937* gen;
 	std::uniform_int_distribution<>* dis;
-	FastNoise* noise;
 	const int numChunkWidth = 60;
-	const int largeChunk = 15;
-	std::vector<Chunk*> chunkList;
-	static std::vector<Chunk*> c;
-	static std::queue<Chunk*> generatedChunks;
-	static std::queue<Chunk*> requestedChunks;
+	const int largeChunk = 5;
 	static bool doneGen;
 	float cameraAngleX = 0.0f;
 	float cameraAngleY = 0.0f;
@@ -44,7 +39,6 @@ public:
 	static void KeyboardUp(unsigned char key);
 	static void MouseMove(int x, int y);
 	static void MouseDrag(int x, int y);
-	static void Generate();
 	void PreGenerate();
 };
 
