@@ -2,6 +2,8 @@
 
 std::vector<void(*)(unsigned char key)> Input::KeyDownCallbacks;
 std::vector<void(*)(unsigned char key)> Input::KeyUpCallbacks;
+std::vector<void(*)(int key)> Input::SpecialKeyDownCallbacks;
+std::vector<void(*)(int key)> Input::SpecialKeyUpCallbacks;
 std::vector<void(*)(int button, int state, int x, int y)> Input::ClickCallbacks;
 std::vector<void(*)(int x, int y)> Input::MoveCallbacks;
 std::vector<void(*)(int x, int y)> Input::DragCallbacks;
@@ -25,6 +27,16 @@ void Input::ListenForKeyDown(void (* callback)(unsigned char key))
 void Input::ListenForKeyUp(void(*callback)(unsigned char key))
 {
 	Input::KeyUpCallbacks.push_back(callback);
+}
+
+void Input::ListenForSpecialKeyDown(void(*callback)(int key))
+{
+	Input::SpecialKeyDownCallbacks.push_back(callback);
+}
+
+void Input::ListenForSpecialKeyUp(void(*callback)(int key))
+{
+	Input::SpecialKeyUpCallbacks.push_back(callback);
 }
 
 void Input::ListenForClick(void (* callback)(int button, int state, int x, int y))
@@ -60,6 +72,28 @@ void Input::StopListenForKeyUp(void(*callback)(unsigned char key))
 		if (Input::KeyUpCallbacks[i] == callback)
 		{
 			Input::KeyUpCallbacks.erase(Input::KeyUpCallbacks.begin() + i);
+		}
+	}
+}
+
+void Input::StopListenForSpecialKeyDown(void(*callback)(int key))
+{
+	for (int i = 0; i < Input::SpecialKeyDownCallbacks.size(); i++)
+	{
+		if (Input::SpecialKeyDownCallbacks[i] == callback)
+		{
+			Input::SpecialKeyDownCallbacks.erase(Input::SpecialKeyDownCallbacks.begin() + i);
+		}
+	}
+}
+
+void Input::StopListenForSpecialKeyUp(void(*callback)(int key))
+{
+	for (int i = 0; i < Input::SpecialKeyUpCallbacks.size(); i++)
+	{
+		if (Input::SpecialKeyUpCallbacks[i] == callback)
+		{
+			Input::SpecialKeyUpCallbacks.erase(Input::SpecialKeyUpCallbacks.begin() + i);
 		}
 	}
 }
@@ -108,6 +142,22 @@ void Input::KeyboardDownFunc(unsigned char key, int x, int y)
 void Input::KeyboardUpFunc(unsigned char key, int x, int y)
 {
 	for each(void(*callback)(unsigned char key) in Input::KeyUpCallbacks)
+	{
+		callback(key);
+	}
+}
+
+void Input::SpecialKeyboardDownFunc(int key, int x, int y)
+{
+	for each(void(*callback)(int key) in Input::SpecialKeyDownCallbacks)
+	{
+		callback(key);
+	}
+}
+
+void Input::SpecialKeyboardUpFunc(int key, int x, int y)
+{
+	for each(void(*callback)(int key) in Input::SpecialKeyUpCallbacks)
 	{
 		callback(key);
 	}

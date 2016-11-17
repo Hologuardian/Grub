@@ -47,14 +47,46 @@ void OpenGLWindow::SetDisplay(void (Display)()) {
 	glutDisplayFunc(Display);
 }
 
-void OpenGLWindow::SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y))
+void OpenGLWindow::SetKeyDownInput(void(*KeyboardDown)(unsigned char key, int x, int y))
 {
-	Logger::Log(EMessageType::LOG_INFO, "Setting input function");
+	Logger::Log(EMessageType::LOG_INFO, "Setting KeyboardDown input function");
 	glutKeyboardFunc(KeyboardDown);
+}
+
+void OpenGLWindow::SetKeyUpInput(void(*KeyboardUp)(unsigned char key, int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting KeyboardUp input function");
 	glutKeyboardUpFunc(KeyboardUp);
+}
+
+void OpenGLWindow::SetMouseClickInput(void(*Click)(int button, int state, int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting Click input function");
 	glutMouseFunc(Click);
+}
+
+void OpenGLWindow::SetMouseMoveInput(void(*Move)(int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting Move input function");
 	glutPassiveMotionFunc(Move);
+}
+
+void OpenGLWindow::SetMouseDragInput(void(*Drag)(int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting Drag input function");
 	glutMotionFunc(Drag);
+}
+
+void OpenGLWindow::SetSpecialKeyDownInput(void(*SpecialDown)(int key, int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting SpecialDown input function");
+	glutSpecialFunc(SpecialDown);
+}
+
+void OpenGLWindow::SetSpecialKeyUpInput(void(*SpecialUp)(int key, int x, int y))
+{
+	Logger::Log(EMessageType::LOG_INFO, "Setting SpecialUp input function");
+	glutSpecialUpFunc(SpecialUp);
 }
 
 void OpenGLWindow::SetUpdate(void (UpdateCallBack)()) {

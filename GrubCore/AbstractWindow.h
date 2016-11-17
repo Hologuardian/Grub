@@ -19,7 +19,13 @@ public:
 	virtual void MakeWindow(int argc, char** argv) = 0;
 	virtual void SetUpdate(void (UpdateCallBack)()) = 0;
 	virtual void SetDisplay(void (Display)()) = 0;
-	virtual void SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y)) = 0;
+	virtual void SetKeyDownInput(void(*KeyboardDown)(unsigned char key, int x, int y)) = 0;
+	virtual void SetKeyUpInput(void(*KeyboardUp)(unsigned char key, int x, int y)) = 0;
+	virtual void SetMouseClickInput(void(*Click)(int button, int state, int x, int y)) = 0;
+	virtual void SetMouseMoveInput(void(*Move)(int x, int y)) = 0;
+	virtual void SetMouseDragInput(void(*Drag)(int x, int y)) = 0;
+	virtual void SetSpecialKeyDownInput(void(*SpecialDown)(int key ,int x, int y)) = 0;
+	virtual void SetSpecialKeyUpInput(void(*SpecialUp)(int key, int x, int y)) = 0;
 public:
 	virtual void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length) = 0;
 	virtual void renderModel(Model* model) = 0;

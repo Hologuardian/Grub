@@ -8,7 +8,13 @@ Grub::Grub(int argc, char** argv)
 	window->MakeWindow(argc, argv);
 	window->SetUpdate(Grub::Update);
 	window->SetDisplay(Grub::Display);
-	window->SetInput(Input::KeyboardDownFunc, Input::KeyboardUpFunc, Input::ClickFunc, Input::MoveFunc, Input::DragFunc);
+	window->SetKeyDownInput(Input::KeyboardDownFunc);
+	window->SetKeyUpInput(Input::KeyboardUpFunc);
+	window->SetMouseClickInput(Input::ClickFunc);
+	window->SetMouseMoveInput(Input::MoveFunc);
+	window->SetMouseDragInput(Input::DragFunc);
+	window->SetSpecialKeyDownInput(Input::SpecialKeyboardDownFunc);
+	window->SetSpecialKeyUpInput(Input::SpecialKeyboardUpFunc);
 	Input::LockPointer = false;
 }
 

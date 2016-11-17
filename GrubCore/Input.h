@@ -13,23 +13,31 @@ public:
 	static void HideCursor(bool hide);
 	static void ListenForKeyDown(void(*callback)(unsigned char key));
 	static void ListenForKeyUp(void(*callback)(unsigned char key));
+	static void ListenForSpecialKeyDown(void(*callback)(int key));
+	static void ListenForSpecialKeyUp(void(*callback)(int key));
 	static void ListenForClick(void(*callback)(int button, int state, int x, int y));
 	static void ListenForMove(void(*callback)(int x, int y));
 	static void ListenForDrag(void(*callback)(int x, int y));
 	static void StopListenForKeyDown(void(*callback)(unsigned char key));
 	static void StopListenForKeyUp(void(*callback)(unsigned char key));
+	static void StopListenForSpecialKeyDown(void(*callback)(int key));
+	static void StopListenForSpecialKeyUp(void(*callback)(int key));
 	static void StopListenForClick(void(*callback)(int button, int state, int x, int y));
 	static void StopListenForMove(void(*callback)(int x, int y));
 	static void StopListenForDrag(void(*callback)(int x, int y));
 public:
 	static void KeyboardDownFunc(unsigned char key, int x, int y);
 	static void KeyboardUpFunc(unsigned char key, int x, int y);
+	static void SpecialKeyboardDownFunc(int key, int x, int y);
+	static void SpecialKeyboardUpFunc(int key, int x, int y);
 	static void ClickFunc(int button, int state, int x, int y);
 	static void MoveFunc(int x, int y);
 	static void DragFunc(int x, int y);
 public:
 	static std::vector<void(*)(unsigned char key)> KeyDownCallbacks;
 	static std::vector<void(*)(unsigned char key)> KeyUpCallbacks;
+	static std::vector<void(*)(int key)> SpecialKeyDownCallbacks;
+	static std::vector<void(*)(int key)> SpecialKeyUpCallbacks;
 	static std::vector<void(*)(int button, int state, int x, int y)> ClickCallbacks;
 	static std::vector<void(*)(int x, int y)> MoveCallbacks;
 	static std::vector<void(*)(int x, int y)> DragCallbacks;

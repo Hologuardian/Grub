@@ -21,7 +21,13 @@ public:
 	void MakeWindow(int argc, char** argv) override;
 	void SetUpdate(void (UpdateCallBack)()) override;
 	void SetDisplay(void (Display)()) override;
-	void SetInput(void(*KeyboardDown)(unsigned char key, int x, int y), void(*KeyboardUp)(unsigned char key, int x, int y), void(*Click)(int button, int state, int x, int y), void(*Move)(int x, int y), void(*Drag)(int x, int y)) override;
+	void SetKeyDownInput(void(*KeyboardDown)(unsigned char key, int x, int y)) override;
+	void SetKeyUpInput(void(*KeyboardUp)(unsigned char key, int x, int y)) override;
+	void SetMouseClickInput(void(*Click)(int button, int state, int x, int y)) override;
+	void SetMouseMoveInput(void(*Move)(int x, int y)) override;
+	void SetMouseDragInput(void(*Drag)(int x, int y)) override;
+	void SetSpecialKeyDownInput(void(*SpecialDown)(int key, int x, int y)) override;
+	void SetSpecialKeyUpInput(void(*SpecialUp)(int key, int x, int y)) override;
 public:
 	void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length);
 	void renderModel(Model* model);
