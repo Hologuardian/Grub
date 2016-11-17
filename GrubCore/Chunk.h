@@ -21,7 +21,7 @@ public:
 	Chunk() = delete;
 	Chunk(int x, int z, ChunkRenderer* renderer);
 	Chunk Load(std::string File) override;
-	void Render(AbstractWindow* window);
+	void Render(Window* window);
 	void Generate();
 	void Initialize();
 	void Buffer();

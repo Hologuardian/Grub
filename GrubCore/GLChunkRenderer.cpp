@@ -18,9 +18,9 @@ GLChunkRenderer::GLChunkRenderer(const Grubuint const program)
 	glBindVertexArray(0);
 }
 
-void GLChunkRenderer::Render(AbstractWindow* window)
+void GLChunkRenderer::Render(Window* window)
 {
-	window->renderPrimitive(AbstractWindow::PrimativeType::QUAD, ChunkVAO, 0, length);
+	window->renderPrimitive(Window::PrimativeType::QUAD, ChunkVAO, 0, length);
 }
 
 void GLChunkRenderer::RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors)

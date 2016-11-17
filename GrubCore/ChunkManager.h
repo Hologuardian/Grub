@@ -7,7 +7,7 @@
 #include <vector>
 #include <thread>
 #include "BlockingQueue.h"
-#include "AbstractWindow.h"
+#include "Window.h"
 
 class ChunkManager
 {
@@ -20,7 +20,7 @@ public:
 	static void RequestChunk(int x, int z, ChunkRenderer* renderer);
 	static void RemoveChunk(int x, int z);
 	static void Update();
-	static void DrawChunks(AbstractWindow* window);
+	static void DrawChunks(Window* window);
 	static void SetSeed(int seed);
 private:
 	static std::vector<Chunk*> chunkList;

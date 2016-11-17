@@ -15,7 +15,7 @@ Chunk Chunk::Load(std::string File)
 	return Chunk(0,0, nullptr);
 }
 
-void Chunk::Render(AbstractWindow* window)
+void Chunk::Render(Window* window)
 {
 	chunkRender->Render(window);
 }

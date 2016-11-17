@@ -118,7 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractWindow.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="ChunkManager.cpp" />
@@ -129,11 +129,11 @@
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Grub.cpp" />
-    <ClCompile Include="OpenGLWindow.cpp" />
+    <ClCompile Include="GLWindow.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Chunk.h" />
@@ -151,7 +151,7 @@
     <ClInclude Include="Grub.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="OpenGLWindow.h" />
+    <ClInclude Include="GLWindow.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SimpleModel.h" />

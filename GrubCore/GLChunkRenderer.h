@@ -18,7 +18,7 @@ public:
 	GLuint ChunkBuffers[BufferCount];
 	int length;
 	GLChunkRenderer(const Grubuint const program);
-	void Render(AbstractWindow* window);
+	void Render(Window* window);
 	void RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors);
 	virtual ~GLChunkRenderer();
 };

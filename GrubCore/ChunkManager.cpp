@@ -60,7 +60,7 @@ void ChunkManager::Update()
 	}
 }
 
-void ChunkManager::DrawChunks(AbstractWindow* window)
+void ChunkManager::DrawChunks(Window* window)
 {
 	Update();
 	for each(Chunk* chunk in chunkList)

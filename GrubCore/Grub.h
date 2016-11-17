@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "Clock.h"
 #include "Logger.h"
-#include "OpenGLWindow.h"
+#include "GLWindow.h"
 
 class Grub
 {
@@ -14,7 +14,7 @@ public:
 public:
 	Grub(int argc, char** argv);
 	~Grub();
-	OpenGLWindow* window;
+	GLWindow* window;
 	virtual void Update(float delta) = 0;
 	virtual void Render() = 0;
 	virtual void Initialize() = 0;

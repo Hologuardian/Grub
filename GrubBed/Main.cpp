@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
 	Clock::init();
 	NewGame = new GrubTest(argc, argv);
 	Grub::instance = NewGame;
-	OpenGLWindow* window = NewGame->window;
+	GLWindow* window = NewGame->window;
 	NewGame->Initialize();
 	while (true)
 		;
