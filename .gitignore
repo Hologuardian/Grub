@@ -42,6 +42,8 @@ dlldata.c
 project.lock.json
 artifacts/
 
+*.cache
+*.enc
 *_i.c
 *_p.c
 *_i.h
@@ -59,6 +61,7 @@ artifacts/
 *.tlh
 *.tmp
 *.tmp_proj
+*.tlog
 *.log
 *.vspscc
 *.vssscc
