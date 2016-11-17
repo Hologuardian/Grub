@@ -14,11 +14,19 @@ public:
 		TRIFAN,
 		POLY
 	};
+	//A uint pointer to a loaded set of shaders that draw to the screen.
 	Grubuint program;
 	virtual ~Window();
+
 	virtual void MakeWindow(int argc, char** argv) = 0;
+
+	//Main loop setups are set up and registered to the backend by the window's specific sub class
 	virtual void SetUpdate(void (UpdateCallBack)()) = 0;
 	virtual void SetDisplay(void (Display)()) = 0;
+	//Will start any main loops that may be registered to the window.
+	virtual void begin() = 0;
+
+	//Input Functions, the window is also in charge of registering function callbacks for input functions
 	virtual void SetKeyDownInput(void(*KeyboardDown)(unsigned char key, int x, int y)) = 0;
 	virtual void SetKeyUpInput(void(*KeyboardUp)(unsigned char key, int x, int y)) = 0;
 	virtual void SetMouseClickInput(void(*Click)(int button, int state, int x, int y)) = 0;
@@ -29,9 +37,11 @@ public:
 public:
 	virtual void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length) = 0;
 	virtual void renderModel(Model* model) = 0;
+	//Deals with all pre-render global settings for the window
 	virtual void startRender() = 0;
+	//Finishes any render settings for the window and should draw the buffer to screen
 	virtual void endRender() = 0;
-	virtual void begin() = 0;
+	//A getter for the camera attached to the window.
 	virtual Camera* GetCamera() = 0;
 };
 

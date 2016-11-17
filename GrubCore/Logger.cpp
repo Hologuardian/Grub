@@ -1,20 +1,5 @@
 #include "Logger.h"
-#include <iostream>
-#include <fstream>
-#include <string>
 
-
-Logger* Logger::theInstance = NULL;
-
-/// TODO: rewrite to write this log file to the hard drive
-void Logger::ClearScreen() {
-	std::string name = "Debug";
-	std::ofstream writeToFile;
-	writeToFile.open(name + ".txt");
-	writeToFile.open(name + ".txt", std::ios::out);
-	writeToFile.close();
-
-}
 void Logger::Log(const EMessageType MsgType, const std::string& Contents) {
 	int type = (MsgType & MESSAGETYPES);
 	if (type == 0)
@@ -53,11 +38,4 @@ void Logger::Log(const EMessageType MsgType, const std::string& Contents) {
 	}
 	//writeToFile << "\n--------------End of Debug---------------------\n";
 	writeToFile.close();
-}
-
-Logger& Logger::getInstance(void) {
-	if (getInstance == NULL) {
-		theInstance = new Logger();
-	}
-	return *theInstance;
 }

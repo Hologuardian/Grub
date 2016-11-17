@@ -19,8 +19,14 @@ public:
 	GLWindow();
 	~GLWindow();
 	void MakeWindow(int argc, char** argv) override;
+	
+	//Main Loop functions
 	void SetUpdate(void (UpdateCallBack)()) override;
 	void SetDisplay(void (Display)()) override;
+	//Starts up the main loops
+	void begin();
+
+	//Input functions
 	void SetKeyDownInput(void(*KeyboardDown)(unsigned char key, int x, int y)) override;
 	void SetKeyUpInput(void(*KeyboardUp)(unsigned char key, int x, int y)) override;
 	void SetMouseClickInput(void(*Click)(int button, int state, int x, int y)) override;
@@ -32,9 +38,10 @@ public:
 	void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length);
 	void renderModel(Model* model);
 	void testDraw(glm::vec3 pos, int c);
+	//Clears specific GL bits
 	void startRender();
+	//Flushes the GLbuffer to draw to screen
 	void endRender();
-	void begin();
 	Camera* GetCamera();
 };
 

@@ -13,6 +13,7 @@ bool Input::LockPointer;
 
 void Input::HideCursor(bool hide)
 {
+	//TODO Needs to be abstracted
 	if(hide)
 		glutSetCursor(GLUT_CURSOR_NONE);
 	else
