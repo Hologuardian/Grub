@@ -11,6 +11,8 @@ GrubTest::GrubTest(int argc, char** argv) : Grub(argc, argv)
 
 	Input::ListenForKeyDown(Keyboard);
 	Input::ListenForKeyUp(KeyboardUp);
+	Input::ListenForSpecialKeyDown(SpecialKeyboard);
+	Input::ListenForSpecialKeyUp(SpecialKeyboardUp);
 	Input::ListenForMove(MouseMove);
 	Input::ListenForDrag(MouseDrag);
 	Input::HideCursor(false);
@@ -135,6 +137,24 @@ void GrubTest::KeyboardUp(unsigned char key)
 		break;
 	case 'e':
 		((GrubTest*)instance)->MoveDirection.y += 1.0f;
+		break;
+	}
+}
+
+void GrubTest::SpecialKeyboard(int key)
+{
+	switch (key)
+	{
+	case MAXINT:
+		break;
+	}
+}
+
+void GrubTest::SpecialKeyboardUp(int key)
+{
+	switch (key)
+	{
+	case MAXINT:
 		break;
 	}
 }

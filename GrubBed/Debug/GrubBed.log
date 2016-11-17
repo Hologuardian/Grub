@@ -1,17 +1,15 @@
 ﻿  GrubTest.cpp
 d:\dev\c++\grub\grubcore\glchunkrenderer.h(20): warning C4114: same type qualifier used more than once
 d:\dev\c++\grub\grubbed\grubtest.cpp(9): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(112): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(146): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(147): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(158): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\dev\c++\grub\grubbed\grubtest.cpp(159): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(34): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(114): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(166): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(167): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(178): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\dev\c++\grub\grubbed\grubtest.cpp(179): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-  Compiling...
+  Skipping... (no relevant changes detected)
   Main.cpp
-d:\dev\c++\grub\grubcore\glchunkrenderer.h(20): warning C4114: same type qualifier used more than once
-  Generating Code...
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBindBuffer imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewBufferData imported
 GrubCore.lib(GLChunkRenderer.obj) : warning LNK4049: locally defined symbol ___glewDeleteBuffers imported

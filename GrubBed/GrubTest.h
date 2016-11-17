@@ -37,6 +37,8 @@ public:
 	void Initialize();
 	static void Keyboard(unsigned char key);
 	static void KeyboardUp(unsigned char key);
+	static void SpecialKeyboard(int key);
+	static void SpecialKeyboardUp(int key);
 	static void MouseMove(int x, int y);
 	static void MouseDrag(int x, int y);
 	void PreGenerate();
