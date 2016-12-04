@@ -35,7 +35,7 @@ public:
 	void SetSpecialKeyDownInput(void(*SpecialDown)(int key, int x, int y)) override;
 	void SetSpecialKeyUpInput(void(*SpecialUp)(int key, int x, int y)) override;
 public:
-	void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length);
+	void renderPrimitive(Primitive prim, Grubuint VAO, int start, int length);
 	void renderModel(Model* model);
 	void testDraw(glm::vec3 pos, int c);
 	//Clears specific GL bits

@@ -1,11 +1,13 @@
 #ifndef GRUB_CHUNKGENERATOR
 #define GRUB_CHUNKGENERATOR
-#include<stdarg.h>
+#include<cstdarg>
+#include "ChunkData.h"
+#include "Constants.h"
+#include "FastNoise.h"
 
-template <typename T, typename S>
 class ChunkGenerator
 {
 public:
-	virtual T genreateChunkData(int numArgs, ...) = 0;
+	virtual void generateChunkData(ChunkData* data, FastNoise noise) = 0;
 };
 #endif

@@ -1,0 +1,10 @@
+#ifndef GRUB_GRAPHICPRIMITIVE
+#define GRUB_GRAPHICPRIMITIVE
+
+enum Primitive {
+	QUAD,
+	TRI,
+	TRIFAN,
+	POLY
+};
+#endif

@@ -118,11 +118,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="CubicChunkMesher.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -130,9 +130,17 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="GLWindow.cpp" />
+    <ClCompile Include="MarchingChunkMesher.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChunkData.h" />
+    <ClInclude Include="ChunkDecorator.h" />
+    <ClInclude Include="ChunkMesher.h" />
+    <ClInclude Include="ChunkRequest.h" />
+    <ClInclude Include="CubicChunkMesher.h" />
+    <ClInclude Include="GraphicPrimitive.h" />
+    <ClInclude Include="MarchingChunkMesher.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="Camera.h" />

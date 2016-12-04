@@ -20,11 +20,14 @@ GLChunkRenderer::GLChunkRenderer(const Grubuint const program)
 
 void GLChunkRenderer::Render(Window* window)
 {
-	window->renderPrimitive(Window::PrimativeType::QUAD, ChunkVAO, 0, length);
+	window->renderPrimitive(prim, ChunkVAO, 0, length);
 }
 
-void GLChunkRenderer::RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors)
+void GLChunkRenderer::RegisterPrimitives(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors, Primitive p)
 {
+	if (Points->size() == 0 || Colors->size() == 0)
+		return;
+	prim = p;
 	glBindVertexArray(ChunkVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, ChunkBuffers[0]);
 	glBufferData(GL_ARRAY_BUFFER, Points->size() * sizeof(Vector3), &Points->at(0), GL_STATIC_DRAW);

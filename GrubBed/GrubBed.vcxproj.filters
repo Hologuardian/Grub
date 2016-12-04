@@ -24,9 +24,21 @@
     <ClCompile Include="GrubTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestChunkGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GrubTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestChunkGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,6 +47,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="triangles.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="uiShader.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

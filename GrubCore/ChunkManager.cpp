@@ -2,7 +2,7 @@
 
 std::vector<Chunk*> ChunkManager::chunkList;
 std::vector<std::thread> ChunkManager::ThreadPool;
-BlockingQueue<Chunk*> ChunkManager::generationRequests;
+BlockingQueue<ChunkRequest> ChunkManager::generationRequests;
 BlockingQueue<Chunk*> ChunkManager::finishedGeneration;
 
 void ChunkManager::Initialize()
@@ -27,17 +27,26 @@ void ChunkManager::GenerateChunk()
 {
 	while (true)
 	{
-		Chunk* toGen = generationRequests.pop();
-		toGen->Generate();
-		toGen->Initialize();
-		finishedGeneration.push(toGen);
+		ChunkRequest request = generationRequests.pop();
+		switch (request.chunkRequestType)
+		{
+		case ChunkRequest::Generation:
+			request.chunk->Generate();
+			request.chunk->Initialize();
+			finishedGeneration.push(request.chunk);
+			break;
+		case ChunkRequest::Deletion:
+			delete request.chunk;
+			request.chunk = nullptr;
+			break;
+		}
 	}
 }
 
-void ChunkManager::RequestChunk(int x, int z, ChunkRenderer* renderer)
+void ChunkManager::RequestChunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, std::vector<ChunkDecorator*>* decorators)
 {
-	Chunk* chunk = new Chunk(x, z, renderer);
-	generationRequests.push(chunk);
+	Chunk* chunk = new Chunk(x, z, renderer, generator, decorators);
+	generationRequests.push(ChunkRequest(ChunkRequest::Generation, x, z, chunk));
 }
 
 void ChunkManager::RemoveChunk(int x, int z)
@@ -45,7 +54,7 @@ void ChunkManager::RemoveChunk(int x, int z)
 	for (int i = 0; i < chunkList.size(); i++)
 	{
 		Chunk* chunk = chunkList[i];
-		if (chunk->ChunkX == x && chunk->ChunkZ == z)
+		if (chunk->data->ChunkX == x && chunk->data->ChunkZ == z)
 			chunkList.erase(chunkList.begin() + i);
 	}
 }

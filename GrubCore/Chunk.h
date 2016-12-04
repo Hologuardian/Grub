@@ -4,22 +4,30 @@
 #include "Constants.h"
 #include "Resource.h"
 #include "ChunkRenderer.h"
+#include "ChunkGenerator.h"
+#include "ChunkDecorator.h"
 #include <vector>
-#include "FastNoise/FastNoise.h"
+#include "FastNoise.h"
+#include "GraphicPrimitive.h"
+#include "MarchingChunkMesher.h"
+#include "CubicChunkMesher.h"
+#include "ChunkData.h"
 
 class Chunk : public Resource<Chunk>
 {
 public:
-	int ChunkX;
-	int ChunkZ;
-	std::vector<float>* ChunkData;
+	ChunkData* data;
 	ChunkRenderer* chunkRender;
-	std::vector<Vector3>* pos;
-	std::vector<Vector3>* colors;
+	ChunkGenerator* chunkGenerator;
+	std::vector<ChunkDecorator*>* chunkDecorators;
 	static FastNoise noise;
+	const Primitive primitiveType = Primitive::TRI;
+	MarchingChunkMesher mesher;
+	//const Primitive primitiveType = Primitive::QUAD;
+	//CubicChunkMesher mesher;
 public:
 	Chunk() = delete;
-	Chunk(int x, int z, ChunkRenderer* renderer);
+	Chunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, std::vector<ChunkDecorator*>* decorators);
 	Chunk Load(std::string File) override;
 	void Render(Window* window);
 	void Generate();

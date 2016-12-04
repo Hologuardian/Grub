@@ -3,10 +3,14 @@
 #include "Grub.h"
 #include <random>
 #include "GLChunkRenderer.h"
-#include "FastNoise/FastNoise.h"
+#include "FastNoise.h"
 #include <thread>  
 #include <queue>
 #include "ChunkManager.h"
+#include <ft2build.h>
+#include "TestChunkGenerator.h"
+#include "TreeDecorator.h"
+#include FT_FREETYPE_H  
 
 
 class GrubTest : public Grub
@@ -22,7 +26,7 @@ public:
 	std::random_device rd;
 	std::mt19937* gen;
 	std::uniform_int_distribution<>* dis;
-	const int numChunkWidth = 60;
+	const int numChunkWidth = 100;
 	const int largeChunk = 5;
 	static bool doneGen;
 	float cameraAngleX = 0.0f;

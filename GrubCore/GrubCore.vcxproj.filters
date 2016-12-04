@@ -13,12 +13,33 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Chunk">
+      <UniqueIdentifier>{824e55fb-bde1-4a50-98d7-c980fd36bf23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Abstract">
+      <UniqueIdentifier>{1dd71b01-1c94-4034-984d-03d2c81a7310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GL">
+      <UniqueIdentifier>{a338e3ca-0ba6-447f-9031-341b9b7714e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chunk">
+      <UniqueIdentifier>{a21caade-421e-4062-b680-37a2e0e0103d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GL">
+      <UniqueIdentifier>{46485035-a4a0-463d-a4d6-e78c78a25734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract">
+      <UniqueIdentifier>{60f55a1a-4b99-4328-b762-c67bf9560ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{46072e56-1045-4f0d-91fb-4bb9a98fb6e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{50836a15-67c0-449b-97f1-85e88f32ca71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadShaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
@@ -30,36 +51,39 @@
     <ClCompile Include="Grub.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Chunk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLChunkRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GLCamera.cpp">
+      <Filter>Source Files\GL</Filter>
     </ClCompile>
-    <ClCompile Include="ChunkManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GLChunkRenderer.cpp">
+      <Filter>Source Files\GL</Filter>
     </ClCompile>
     <ClCompile Include="GLWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="Chunk.cpp">
+      <Filter>Source Files\Chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="ChunkManager.cpp">
+      <Filter>Source Files\Chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadShaders.cpp">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="CubicChunkMesher.cpp">
+      <Filter>Source Files\Chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="MarchingChunkMesher.cpp">
+      <Filter>Source Files\Chunk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Clock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadShaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
@@ -71,68 +95,92 @@
     <ClInclude Include="Grub.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleVertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureVertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chunk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLChunkRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChunkRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChunkManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BlockingQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChunkGenerator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Chunk.h">
+      <Filter>Header Files\Chunk</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ChunkGenerator.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkManager.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkRenderer.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkDecorator.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="GLCamera.h">
+      <Filter>Header Files\GL</Filter>
     </ClInclude>
     <ClInclude Include="GLWindow.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadShaders.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleModel.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleVertex.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureVertex.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicPrimitive.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkMesher.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="CubicChunkMesher.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="MarchingChunkMesher.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkData.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="GLChunkRenderer.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkRequest.h">
+      <Filter>Header Files\Chunk</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

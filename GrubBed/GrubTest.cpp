@@ -1,5 +1,5 @@
 #include "GrubTest.h"
-#include "FastNoise/FastNoise.cpp"
+#include "FastNoise.cpp"
 
 bool GrubTest::doneGen = false;
 
@@ -21,7 +21,7 @@ GrubTest::GrubTest(int argc, char** argv) : Grub(argc, argv)
 
 void GrubTest::Initialize()
 {
-	Vector3 position = Vector3(480, 512, -292);
+	Vector3 position = Vector3(240, 256, -146);
 	window->GetCamera()->Move(position);
 	cameraAngleX = glm::half_pi<float>();
 	cameraAngleY = glm::quarter_pi<float>();
@@ -44,7 +44,11 @@ void GrubTest::PreGenerate()
 			{
 				for (int m = mSet; m < glm::min(mSet + largeChunk, width); m++)
 				{
-					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program));
+					std::vector<ChunkDecorator*>* decorators = new std::vector<ChunkDecorator*>();
+
+					decorators->push_back(new TreeDecorator());
+
+					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program), new TestChunkGenerator(), decorators);
 				}
 			}
 			nSet += largeChunk;
@@ -78,35 +82,45 @@ void GrubTest::Keyboard(unsigned char key)
 {
 	switch (key)
 	{
+	case 'P':
 	case 'p':
 		glutExit();
 		break;
+	case 'W':
 	case 'w':
 		((GrubTest*)instance)->MoveDirection.x += 1.0f;
 		break;
+	case 'S':
 	case 's':
 		((GrubTest*)instance)->MoveDirection.x += -1.0f;
 		break;
+	case 'A':
 	case 'a':
 		((GrubTest*)instance)->MoveDirection.z += -1.0f;
 		break;
+	case 'D':
 	case 'd':
 		((GrubTest*)instance)->MoveDirection.z += 1.0f;
 		break;
+	case 'Q':
 	case 'q':
 		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;
+	case 'E':
 	case 'e':
 		((GrubTest*)instance)->MoveDirection.y += -1.0f;
 		break;
+	case 'F':
 	case 'f':
 		((GrubTest*)instance)->MoveDirection.x = 0.0f;
 		((GrubTest*)instance)->MoveDirection.y = 0.0f;
 		((GrubTest*)instance)->MoveDirection.z = 0.0f;
 		break;
+	case 'G':
 	case 'g':
 		((GrubTest*)instance)->PreGenerate();
 		break;
+	case 'Z':
 	case 'z':
 		Input::LockPointer = Input::LockPointer ? false : true;
 		Input::HideCursor(Input::LockPointer);
@@ -187,5 +201,6 @@ void GrubTest::Render()
 {
 	window->startRender();
 	ChunkManager::DrawChunks(window);
+	//window->testDraw(Vector3(0),0);
 	window->endRender();
 }

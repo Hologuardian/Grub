@@ -1,13 +1,13 @@
 #ifndef GRUB_CHUNKMANAGER
 #define GRUB_CHUNKMANAGER
 #include "Constants.h"
-#include "Chunk.h"
 #include <unordered_map>
 #include <map>
 #include <vector>
 #include <thread>
 #include "BlockingQueue.h"
 #include "Window.h"
+#include "ChunkRequest.h"
 
 class ChunkManager
 {
@@ -29,7 +29,7 @@ public:
 
 	The x and z are the chunk position, which is the absolute position divided by the chunk width.
 	*/
-	static void RequestChunk(int x, int z, ChunkRenderer* renderer);
+	static void RequestChunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, std::vector<ChunkDecorator*>* decorators);
 	/**
 	Requests a specific chunk to be removed, this is not currently a threaded operation.
 
@@ -51,7 +51,7 @@ private:
 	static void Update();
 	static std::vector<Chunk*> chunkList;
 	static std::vector<std::thread> ThreadPool;	
-	static BlockingQueue<Chunk*> generationRequests;
+	static BlockingQueue<ChunkRequest> generationRequests;
 	static BlockingQueue<Chunk*> finishedGeneration;
 };
 #endif

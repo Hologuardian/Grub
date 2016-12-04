@@ -3,20 +3,16 @@
 #include "Model.h"
 #include "Constants.h"
 #include "Camera.h"
+#include "GraphicPrimitive.h"
 
 class Window
 {
 public:
-	enum PrimativeType {
-		NONE,
-		QUAD,
-		TRI,
-		TRIFAN,
-		POLY
-	};
 	//A uint pointer to a loaded set of shaders that draw to the screen.
 	Grubuint program;
-	virtual ~Window();
+	//A uint pointer to a loaded set of shaders that draw to the screen.
+	Grubuint uiprogram;
+	virtual ~Window() {};
 
 	virtual void MakeWindow(int argc, char** argv) = 0;
 
@@ -35,7 +31,7 @@ public:
 	virtual void SetSpecialKeyDownInput(void(*SpecialDown)(int key ,int x, int y)) = 0;
 	virtual void SetSpecialKeyUpInput(void(*SpecialUp)(int key, int x, int y)) = 0;
 public:
-	virtual void renderPrimitive(PrimativeType prim, Grubuint VAO, int start, int length) = 0;
+	virtual void renderPrimitive(Primitive prim, Grubuint VAO, int start, int length) = 0;
 	virtual void renderModel(Model* model) = 0;
 	//Deals with all pre-render global settings for the window
 	virtual void startRender() = 0;

@@ -29,7 +29,7 @@ public:
 	/**
 	Registers all of the data required sent from the chunk file, this is put into the buffer to be drawn.
 	*/
-	void RegisterQuads(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors);
+	void RegisterPrimitives(const std::vector<Vector3>* const Points, const std::vector<Vector3>* const Colors, Primitive p);
 	/**
 	Destroys the object
 	*/
