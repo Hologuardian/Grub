@@ -9,9 +9,10 @@ class BlockingQueue
 {
 private:
 	std::mutex mutex;
-	std::condition_variable condVar;
 	std::deque<T> queue;
 public:
+	std::condition_variable condVar;
+	bool run = true;
 	/**
 	Pushes an item onto the queue, thread safe.
 	*/
@@ -28,6 +29,7 @@ public:
 	T pop()
 	{
 		std::unique_lock<std::mutex> lock(this->mutex);
+		this->condVar.wait(lock, [=] { return this->run == true; });
 		this->condVar.wait(lock, [=] { return !this->queue.empty(); });
 		T rc(std::move(this->queue.back()));
 		this->queue.pop_back();
@@ -40,6 +42,11 @@ public:
 	bool empty()
 	{
 		return queue.empty();
+	}
+
+	int size()
+	{
+		return queue.size();
 	}
 };
 #endif

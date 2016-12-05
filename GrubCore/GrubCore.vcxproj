@@ -134,11 +134,14 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockingVector.h" />
     <ClInclude Include="ChunkData.h" />
     <ClInclude Include="ChunkDecorator.h" />
     <ClInclude Include="ChunkMesher.h" />
     <ClInclude Include="ChunkRequest.h" />
     <ClInclude Include="CubicChunkMesher.h" />
+    <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GraphicPrimitive.h" />
     <ClInclude Include="MarchingChunkMesher.h" />
     <ClInclude Include="Window.h" />

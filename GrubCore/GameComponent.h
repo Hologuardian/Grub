@@ -1,0 +1,5 @@
+#ifndef GRUB_GAMECOMPONENT
+#define GRUB_GAMECOMPONENT
+
+
+#endif

@@ -26,7 +26,7 @@ public:
 	std::random_device rd;
 	std::mt19937* gen;
 	std::uniform_int_distribution<>* dis;
-	const int numChunkWidth = 100;
+	const int numChunkWidth = 60;
 	const int largeChunk = 5;
 	static bool doneGen;
 	float cameraAngleX = 0.0f;

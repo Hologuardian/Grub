@@ -182,5 +182,14 @@
     <ClInclude Include="ChunkRequest.h">
       <Filter>Header Files\Chunk</Filter>
     </ClInclude>
+    <ClInclude Include="BlockingVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

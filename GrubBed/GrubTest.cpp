@@ -32,7 +32,6 @@ void GrubTest::Initialize()
 void GrubTest::PreGenerate()
 {
 	ChunkManager::SetSeed(Clock::getCurrentTime());
-	ChunkManager::Clear();
 	int nSet = 0;
 	int mSet = 0;
 	int width = ((GrubTest*)instance)->numChunkWidth;
@@ -44,10 +43,11 @@ void GrubTest::PreGenerate()
 			{
 				for (int m = mSet; m < glm::min(mSet + largeChunk, width); m++)
 				{
+					if(doneGen)
+						ChunkManager::RemoveChunk(n, m);
 					std::vector<ChunkDecorator*>* decorators = new std::vector<ChunkDecorator*>();
 
 					decorators->push_back(new TreeDecorator());
-
 					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program), new TestChunkGenerator(), decorators);
 				}
 			}
@@ -56,6 +56,7 @@ void GrubTest::PreGenerate()
 		nSet = 0;
 		mSet += largeChunk;
 	}
+	doneGen = true;
 }
 
 void GrubTest::Update(float Delta)

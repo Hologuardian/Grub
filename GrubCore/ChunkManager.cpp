@@ -1,6 +1,7 @@
 #include "ChunkManager.h"
 
-std::vector<Chunk*> ChunkManager::chunkList;
+BlockingChunkVector ChunkManager::chunkList;
+std::queue<Chunk*> ChunkManager::deletionPool;
 std::vector<std::thread> ChunkManager::ThreadPool;
 BlockingQueue<ChunkRequest> ChunkManager::generationRequests;
 BlockingQueue<Chunk*> ChunkManager::finishedGeneration;
@@ -36,8 +37,7 @@ void ChunkManager::GenerateChunk()
 			finishedGeneration.push(request.chunk);
 			break;
 		case ChunkRequest::Deletion:
-			delete request.chunk;
-			request.chunk = nullptr;
+			chunkList.erase(request.ChunkX, request.ChunkZ);
 			break;
 		}
 	}
@@ -46,17 +46,15 @@ void ChunkManager::GenerateChunk()
 void ChunkManager::RequestChunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, std::vector<ChunkDecorator*>* decorators)
 {
 	Chunk* chunk = new Chunk(x, z, renderer, generator, decorators);
-	generationRequests.push(ChunkRequest(ChunkRequest::Generation, x, z, chunk));
+	generationRequests.push(ChunkRequest(ChunkRequest::Generation, chunk));
 }
 
 void ChunkManager::RemoveChunk(int x, int z)
 {
-	for (int i = 0; i < chunkList.size(); i++)
-	{
-		Chunk* chunk = chunkList[i];
-		if (chunk->data->ChunkX == x && chunk->data->ChunkZ == z)
-			chunkList.erase(chunkList.begin() + i);
-	}
+	generationRequests.run = false;
+	Chunk* chunk = chunkList.get(x, z);
+	deletionPool.push(chunk);
+	return;
 }
 
 void ChunkManager::Update()
@@ -67,15 +65,27 @@ void ChunkManager::Update()
 		chunk->Buffer();
 		chunkList.push_back(chunk);
 	}
+	for (int n = 0; n < 25; n++)
+	{
+		if (deletionPool.size() > 0)
+		{
+			Chunk* chunk = deletionPool.front();
+			if (chunk)
+				chunkList.erase(chunk->data->ChunkX, chunk->data->ChunkZ);
+			deletionPool.pop();
+		}
+		else
+		{
+			generationRequests.run = true;
+			generationRequests.condVar.notify_one();
+		}
+	}
 }
 
 void ChunkManager::DrawChunks(Window* window)
 {
 	Update();
-	for each(Chunk* chunk in chunkList)
-	{
-		chunk->Render(window);
-	}
+	chunkList.DrawAll(window);
 }
 
 void ChunkManager::SetSeed(int seed)

@@ -1,5 +1,5 @@
 #ifndef GRUB_CHUNK
-#define GRUB_CHUN
+#define GRUB_CHUNK
 #include "Logger.h"
 #include "Constants.h"
 #include "Resource.h"
