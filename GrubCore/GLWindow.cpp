@@ -20,7 +20,7 @@ void GLWindow::MakeWindow(int argc,char** argv) {
 	//glutFullScreen();
 
 	glewInit();
-	
+	glm::frustum<float>(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
 
 	ShaderInfo shaders[] = {

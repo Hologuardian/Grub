@@ -29,8 +29,8 @@ public:
 	T pop()
 	{
 		std::unique_lock<std::mutex> lock(this->mutex);
-		this->condVar.wait(lock, [=] { return this->run == true; });
 		this->condVar.wait(lock, [=] { return !this->queue.empty(); });
+		this->condVar.wait(lock, [=] { return this->run == true; });
 		T rc(std::move(this->queue.back()));
 		this->queue.pop_back();
 		return rc;

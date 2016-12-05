@@ -10,6 +10,7 @@ Chunk::Chunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, s
 	chunkRender = renderer;
 	chunkGenerator = generator;
 	chunkDecorators = decorators;
+	objects = new std::vector<GameObject*>();
 }
 
 Chunk Chunk::Load(std::string File)
@@ -48,4 +49,6 @@ Chunk::~Chunk()
 	data = nullptr;
 	delete chunkRender;
 	chunkRender = nullptr;
+	delete objects;
+	objects = nullptr;
 }

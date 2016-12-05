@@ -12,6 +12,7 @@
 #include "MarchingChunkMesher.h"
 #include "CubicChunkMesher.h"
 #include "ChunkData.h"
+#include "GameObject.h"
 
 class Chunk : public Resource<Chunk>
 {
@@ -20,6 +21,7 @@ public:
 	ChunkRenderer* chunkRender;
 	ChunkGenerator* chunkGenerator;
 	std::vector<ChunkDecorator*>* chunkDecorators;
+	std::vector<GameObject*>* objects;
 	static FastNoise noise;
 	const Primitive primitiveType = Primitive::TRI;
 	MarchingChunkMesher mesher;
