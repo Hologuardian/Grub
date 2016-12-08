@@ -25,10 +25,28 @@ void TreeDecorator::decorateChunkData(ChunkData * data, FastNoise noise)
 
 				if (tree)
 				{
-					if (height < 10)
+					if (height < 2)
 					{
 						height++;
-						unsigned int color = 0x8b4513;
+						unsigned int color = 0xf08080;
+						data->values->at(i * (ChunkWidth + 1) * (ChunkHeight + 1) + j * (ChunkHeight + 1) + k) = color;
+					}
+					else if (height < 3)
+					{
+						height++;
+						unsigned int color = 0xaaaaaa;
+						data->values->at(i * (ChunkWidth + 1) * (ChunkHeight + 1) + j * (ChunkHeight + 1) + k) = color;
+					}
+					else if (height < 10)
+					{
+						height++;
+						unsigned int color = 0xf8990e;
+						data->values->at(i * (ChunkWidth + 1) * (ChunkHeight + 1) + j * (ChunkHeight + 1) + k) = color;
+					}
+					else if (height == 10)
+					{
+						height++;
+						unsigned int color = 0x777777;
 						data->values->at(i * (ChunkWidth + 1) * (ChunkHeight + 1) + j * (ChunkHeight + 1) + k) = color;
 					}
 				}

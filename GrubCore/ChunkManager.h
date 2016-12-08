@@ -8,7 +8,7 @@
 #include "BlockingQueue.h"
 #include "Window.h"
 #include "ChunkRequest.h"
-#include "BlockingVector.h"
+#include "BlockingChunkVector.h"
 
 class ChunkManager
 {

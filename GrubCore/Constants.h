@@ -23,8 +23,10 @@ typedef glm::vec4 Vector4;
 typedef GLuint Grubuint;
 #endif
 
-const float screenWidth = 1520;
-const float screenHeight = 790;
+const bool FullScreen = true;
+
+const float screenWidth = 1920;
+const float screenHeight = 1080;
 const float halfScreenWidth = screenWidth / 2;
 const float halfScreenHeight = screenHeight / 2;
 

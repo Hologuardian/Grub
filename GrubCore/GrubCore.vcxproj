@@ -137,7 +137,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BlockingVector.h" />
+    <ClInclude Include="BlockingChunkVector.h" />
     <ClInclude Include="ChunkData.h" />
     <ClInclude Include="ChunkDecorator.h" />
     <ClInclude Include="ChunkMesher.h" />

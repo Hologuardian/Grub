@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="GrubTest.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PencilTreeDecorator.cpp" />
     <ClCompile Include="TestChunkGenerator.cpp" />
     <ClCompile Include="TreeDecorator.cpp" />
   </ItemGroup>
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GrubTest.h" />
+    <ClInclude Include="PencilTreeDecorator.h" />
     <ClInclude Include="TestChunkGenerator.h" />
     <ClInclude Include="TreeDecorator.h" />
   </ItemGroup>

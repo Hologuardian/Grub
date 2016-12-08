@@ -61,6 +61,11 @@ void GrubTest::PreGenerate()
 
 void GrubTest::Update(float Delta)
 {
+	/*float posX = glm::cos(x);
+	float posZ = glm::sin(x);
+	window->GetCamera()->Look(Vector3(50, 0, 50), Vector3(0, 1.0f, 0));
+	window->GetCamera()->Move(Vector3(posX, 0, posZ));*/
+	//
 	float x = glm::cos(cameraAngleX);
 	float z = glm::sin(cameraAngleX);
 	float YA = glm::cos(cameraAngleY);
@@ -74,8 +79,8 @@ void GrubTest::Update(float Delta)
 	direction.y = 0;
 	Vector3 forward = direction * MoveDirection.x;
 	Vector3 sideways = glm::cross(direction, Vector3(0, 1, 0)) * MoveDirection.z;
-	window->GetCamera()->Move((forward + sideways) * 150.0f * Delta);
-	window->GetCamera()->Move(Vector3(0, MoveDirection.y * 75.0f * Delta, 0));
+	window->GetCamera()->Move((forward + sideways) * speed * Delta);
+	window->GetCamera()->Move(Vector3(0, MoveDirection.y * speed / 2 * Delta, 0));
 	//Logger::Log(EMessageType::LOG_UPDATE, "Updating, Delta: " + std::to_string(Delta) + " FPS: " + std::to_string(1.0f/Delta));
 }
 
@@ -88,28 +93,52 @@ void GrubTest::Keyboard(unsigned char key)
 		glutExit();
 		break;
 	case 'W':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.x += 1.0f;
+		break;
 	case 'w':
+		((GrubTest*)instance)->speed = 25.0f;
 		((GrubTest*)instance)->MoveDirection.x += 1.0f;
 		break;
 	case 'S':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.x -= 1.0f;
+		break;
 	case 's':
-		((GrubTest*)instance)->MoveDirection.x += -1.0f;
+		((GrubTest*)instance)->speed = 25.0f;
+		((GrubTest*)instance)->MoveDirection.x -= 1.0f;
 		break;
 	case 'A':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.z -= 1.0f;
+		break;
 	case 'a':
-		((GrubTest*)instance)->MoveDirection.z += -1.0f;
+		((GrubTest*)instance)->speed = 25.0f;
+		((GrubTest*)instance)->MoveDirection.z -= 1.0f;
 		break;
 	case 'D':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.z += 1.0f;
+		break;
 	case 'd':
+		((GrubTest*)instance)->speed = 25.0f;
 		((GrubTest*)instance)->MoveDirection.z += 1.0f;
 		break;
 	case 'Q':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.y += 1.0f;
+		break;
 	case 'q':
+		((GrubTest*)instance)->speed = 25.0f;
 		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;
 	case 'E':
+		((GrubTest*)instance)->speed = 150.0f;
+		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
+		break;
 	case 'e':
-		((GrubTest*)instance)->MoveDirection.y += -1.0f;
+		((GrubTest*)instance)->speed = 25.0f;
+		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
 		break;
 	case 'F':
 	case 'f':
@@ -135,21 +164,27 @@ void GrubTest::KeyboardUp(unsigned char key)
 {
 	switch (key)
 	{
+	case 'W':
 	case 'w':
 		((GrubTest*)instance)->MoveDirection.x -= 1.0f;
 		break;
+	case 'S':
 	case 's':
 		((GrubTest*)instance)->MoveDirection.x -= -1.0f;
 		break;
+	case 'A':
 	case 'a':
 		((GrubTest*)instance)->MoveDirection.z -= -1.0f;
 		break;
+	case 'D':
 	case 'd':
 		((GrubTest*)instance)->MoveDirection.z -= 1.0f;
 		break;
+	case 'Q':
 	case 'q':
 		((GrubTest*)instance)->MoveDirection.y += -1.0f;
 		break;
+	case 'E':
 	case 'e':
 		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;

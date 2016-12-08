@@ -8,6 +8,9 @@ class Texture : public Resource<Texture>
 {
 public:
 	std::vector<TextureVertex> data;
+	int width;
+	int height;
+
 	Texture Load(std::string file) override
 	{
 		;
