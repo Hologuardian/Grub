@@ -1,4 +1,5 @@
 #include "GLChunkRenderer.h"
+#ifdef GRUB_USEOPENGL
 
 GLChunkRenderer::GLChunkRenderer(const Grubuint const program)
 {
@@ -44,3 +45,4 @@ GLChunkRenderer::~GLChunkRenderer()
 	glBindVertexArray(0);
 	glDeleteVertexArrays(1, &ChunkVAO);
 }
+#endif

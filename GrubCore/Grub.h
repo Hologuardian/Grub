@@ -17,7 +17,7 @@ public:
 	*/
 	Grub(int argc, char** argv);
 	~Grub();
-	GLWindow* window;
+	Window* window;
 	/**
 	Abstract update function, to be overridden.
 	*/

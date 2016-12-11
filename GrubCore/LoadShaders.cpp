@@ -1,3 +1,4 @@
+#ifdef GRUB_USEOPENGL
 //////////////////////////////////////////////////////////////////////////////
 //
 //  --- LoadShaders.cxx ---
@@ -141,5 +142,4 @@ LoadShaders( ShaderInfo* shaders )
 #ifdef __cplusplus
 }
 #endif // __cplusplus
-
-
+#endif

@@ -1,3 +1,4 @@
+#ifdef GRUB_USEOPENGL
 //////////////////////////////////////////////////////////////////////////////
 //
 //  --- LoadShaders.h ---
@@ -42,3 +43,4 @@ GLuint LoadShaders( ShaderInfo* );
 #endif // __cplusplus
 
 #endif // __LOAD_SHADERS_H__
+#endif
