@@ -8,6 +8,7 @@
 #include "BlockingQueue.h"
 #include "Window.h"
 #include "ChunkRequest.h"
+#include "BlockingChunkVector.h"
 
 class ChunkManager
 {
@@ -49,7 +50,8 @@ public:
 private:
 	static void GenerateChunk();
 	static void Update();
-	static std::vector<Chunk*> chunkList;
+	static BlockingChunkVector chunkList;
+	static std::queue<Chunk*> deletionPool;
 	static std::vector<std::thread> ThreadPool;	
 	static BlockingQueue<ChunkRequest> generationRequests;
 	static BlockingQueue<Chunk*> finishedGeneration;

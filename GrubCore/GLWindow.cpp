@@ -17,10 +17,11 @@ void GLWindow::MakeWindow(int argc,char** argv) {
 	glutInitWindowPosition(0, 0);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glutCreateWindow("Grub");
-	//glutFullScreen();
+	if(FullScreen)
+		glutFullScreen();
 
 	glewInit();
-	
+	glm::frustum<float>(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
 
 	ShaderInfo shaders[] = {

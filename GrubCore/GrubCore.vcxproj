@@ -90,6 +90,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;nvToolsExt32_1.dll;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -139,13 +142,19 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockingChunkVector.h" />
     <ClInclude Include="ChunkData.h" />
     <ClInclude Include="ChunkDecorator.h" />
     <ClInclude Include="ChunkMesher.h" />
     <ClInclude Include="ChunkRequest.h" />
     <ClInclude Include="CubicChunkMesher.h" />
+<<<<<<< HEAD
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="DX11Window.h" />
+=======
+    <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="GameObject.h" />
+>>>>>>> c2a0b967ebf5737fd0cd633e1358959f20f9476b
     <ClInclude Include="GraphicPrimitive.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="InputClass.h" />

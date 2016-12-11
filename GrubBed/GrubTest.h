@@ -21,7 +21,7 @@ public:
 	float hi = 0.0f;
 	const float hiMax = 3.0f;
 	bool up = false;
-	const float speed = 20.0f;
+	float speed = 25.0f;
 	const float zOffset = 0.0f;
 	std::random_device rd;
 	std::mt19937* gen;
