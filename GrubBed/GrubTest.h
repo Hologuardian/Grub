@@ -10,6 +10,7 @@
 #include <ft2build.h>
 #include "TestChunkGenerator.h"
 #include "TreeDecorator.h"
+#include "Constants.h"
 #include FT_FREETYPE_H  
 
 
