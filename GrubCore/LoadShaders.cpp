@@ -1,3 +1,4 @@
+#include "LoadShaders.h"
 #ifdef GRUB_USEOPENGL
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -10,7 +11,6 @@
 
 #define GLEW_STATIC
 #include "OpenGL\include\glew.h"
-#include "LoadShaders.h"
 
 #ifdef __cplusplus
 extern "C" {
