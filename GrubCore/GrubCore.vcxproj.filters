@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{50836a15-67c0-449b-97f1-85e88f32ca71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DirectX11">
+      <UniqueIdentifier>{2f0f4347-4a0f-4be0-b6d9-6a0b90bb6e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX11">
+      <UniqueIdentifier>{291ddca0-de95-4dc6-9e21-daf20526e877}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clock.cpp">
@@ -80,6 +86,21 @@
     </ClCompile>
     <ClCompile Include="MarchingChunkMesher.cpp">
       <Filter>Source Files\Chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="DX11Window.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsClass.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Source Files\DirectX11</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +202,21 @@
     </ClInclude>
     <ClInclude Include="ChunkRequest.h">
       <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="DX11Window.h">
+      <Filter>Header Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>Header Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>Header Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsClass.h">
+      <Filter>Header Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Header Files\DirectX11</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

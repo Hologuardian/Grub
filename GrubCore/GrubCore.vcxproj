@@ -123,14 +123,19 @@
     <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CubicChunkMesher.cpp" />
+    <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="DX11Window.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
+    <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="GLWindow.cpp" />
     <ClCompile Include="MarchingChunkMesher.cpp" />
+    <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,8 +144,13 @@
     <ClInclude Include="ChunkMesher.h" />
     <ClInclude Include="ChunkRequest.h" />
     <ClInclude Include="CubicChunkMesher.h" />
+    <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="DX11Window.h" />
     <ClInclude Include="GraphicPrimitive.h" />
+    <ClInclude Include="GraphicsClass.h" />
+    <ClInclude Include="InputClass.h" />
     <ClInclude Include="MarchingChunkMesher.h" />
+    <ClInclude Include="SystemClass.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="Camera.h" />
