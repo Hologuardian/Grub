@@ -4,18 +4,23 @@
 #include "glm\glm\glm.hpp"
 #include "SimpleVertex.h"
 
-#define GRUB_GL
+//#define GRUB_USEOPENGL
 //#define GRUB_DX12
 
-typedef SimpleVertex Vert;
-#ifdef GRUB_GL
+typedef SimpleVertex Vert; 
+#ifdef GRUB_USEOPENGL
 typedef glm::mat4 Matrix;
 typedef glm::vec2 Vector2;
 typedef glm::vec3 Vector3;
 typedef glm::vec4 Vector4;
 typedef GLuint Grubuint;
-#endif
-#ifdef GRUB_DX12
+#elifdef GRUB_DX12
+typedef glm::mat4 Matrix;
+typedef glm::vec2 Vector2;
+typedef glm::vec3 Vector3;
+typedef glm::vec4 Vector4;
+typedef GLuint Grubuint;
+#else
 typedef glm::mat4 Matrix;
 typedef glm::vec2 Vector2;
 typedef glm::vec3 Vector3;

@@ -4,7 +4,9 @@ const GLuint NumVertices = 12;
 
 Grub::Grub(int argc, char** argv)
 {
+	#ifdef GRUB_USEOPENGL
 	window = new GLWindow();
+	#endif
 	window->MakeWindow(argc, argv);
 	window->SetUpdate(Grub::Update);
 	window->SetDisplay(Grub::Display);

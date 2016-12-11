@@ -1,4 +1,5 @@
 #include "GLCamera.h"
+#ifdef GRUB_USEOPENGL
 
 GLCamera::GLCamera(Vector3 position, Vector3 lookAt, Vector3 up, GLuint program)
 {
@@ -54,3 +55,4 @@ void GLCamera::Look(const Vector3 direction, const  Vector3 up)
 	view = glm::lookAt(Camera::position, look, up);
 	glUniformMatrix4fv(cameraMatrix, 1, GL_FALSE, &view[0][0]);
 }
+#endif

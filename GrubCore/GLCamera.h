@@ -1,6 +1,7 @@
+#include "Camera.h"
+#ifdef GRUB_USEOPENGL
 #ifndef GRUB_GLCAMERA
 #define GRUB_GLCAMERA
-#include "Camera.h"
 
 #include "opengl\include\glew.h"
 #include "opengl\include\glut.h"
@@ -39,4 +40,5 @@ private:
 	GLuint projMatrixLoc;
 };
 
+#endif
 #endif

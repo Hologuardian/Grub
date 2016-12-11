@@ -1,4 +1,5 @@
 #include "GLWindow.h"
+#ifdef GRUB_USEOPENGL
 
 GLWindow::GLWindow()
 {
@@ -155,3 +156,4 @@ void GLWindow::testDraw(glm::vec3 pos, int c)
 GLWindow::~GLWindow()
 {
 }
+#endif

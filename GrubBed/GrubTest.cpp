@@ -47,8 +47,9 @@ void GrubTest::PreGenerate()
 						ChunkManager::RemoveChunk(n, m);
 					std::vector<ChunkDecorator*>* decorators = new std::vector<ChunkDecorator*>();
 
-					decorators->push_back(new TreeDecorator());
+					#ifdef GRUB_OPENGL
 					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program), new TestChunkGenerator(), decorators);
+				#endif
 				}
 			}
 			nSet += largeChunk;

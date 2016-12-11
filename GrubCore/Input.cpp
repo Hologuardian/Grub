@@ -13,11 +13,14 @@ bool Input::LockPointer;
 
 void Input::HideCursor(bool hide)
 {
+#ifdef GRUB_USEOPENGL
+
 	//TODO Needs to be abstracted
 	if(hide)
 		glutSetCursor(GLUT_CURSOR_NONE);
 	else
 		glutSetCursor(GLUT_CURSOR_INHERIT);
+#endif
 }
 
 void Input::ListenForKeyDown(void (* callback)(unsigned char key))

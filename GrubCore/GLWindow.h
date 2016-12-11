@@ -1,7 +1,8 @@
+#include "Window.h"
+#ifdef GRUB_USEOPENGL
 #ifndef GRUB_OPEN_GL_WINDOW_H
 #define GRUB_OPEN_GL_WINDOW_H
 
-#include "Window.h"
 #include "Logger.h"
 #include "GLCamera.h"
 
@@ -45,4 +46,5 @@ public:
 	Camera* GetCamera();
 };
 
+#endif
 #endif
