@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{50836a15-67c0-449b-97f1-85e88f32ca71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectX">
+      <UniqueIdentifier>{eadca518-5010-49a1-a1b0-6b02184eb904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX">
+      <UniqueIdentifier>{d05b1666-d657-44cb-9815-75dcd1f0e14d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clock.cpp">
@@ -80,6 +86,18 @@
     </ClCompile>
     <ClCompile Include="MarchingChunkMesher.cpp">
       <Filter>Source Files\Chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Source Files\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsClass.cpp">
+      <Filter>Source Files\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Source Files\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Source Files\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +208,18 @@
     </ClInclude>
     <ClInclude Include="BlockingChunkVector.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsClass.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>DirectX</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

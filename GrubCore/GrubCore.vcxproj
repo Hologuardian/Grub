@@ -28,14 +28,14 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -126,14 +126,18 @@
     <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CubicChunkMesher.cpp" />
+    <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
+    <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="GLWindow.cpp" />
     <ClCompile Include="MarchingChunkMesher.cpp" />
+    <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,10 +147,14 @@
     <ClInclude Include="ChunkMesher.h" />
     <ClInclude Include="ChunkRequest.h" />
     <ClInclude Include="CubicChunkMesher.h" />
+    <ClInclude Include="D3DClass.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GraphicPrimitive.h" />
+    <ClInclude Include="GraphicsClass.h" />
+    <ClInclude Include="InputClass.h" />
     <ClInclude Include="MarchingChunkMesher.h" />
+    <ClInclude Include="SystemClass.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="BlockingQueue.h" />
     <ClInclude Include="Camera.h" />
