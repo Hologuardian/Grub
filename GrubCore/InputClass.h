@@ -1,3 +1,5 @@
+#include "Constants.h"
+#ifdef GRUB_DX11
 #ifndef _INPUT_CLASS_H_
 #define _INPUT_CLASS_H_
 
@@ -18,4 +20,5 @@ private:
 	bool keys[256];
 };
 
+#endif
 #endif

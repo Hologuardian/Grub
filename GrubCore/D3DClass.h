@@ -1,3 +1,5 @@
+#include "Constants.h"
+#ifdef GRUB_DX11
 #ifndef _D3DCLASS_H_
 #define _D3DCLASS_H_
 
@@ -51,4 +53,5 @@ private:
 	XMMATRIX orthoMatrix;
 };
 
+#endif
 #endif

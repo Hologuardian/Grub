@@ -1,3 +1,5 @@
+#include "Constants.h"
+#ifdef GRUB_DX11
 #ifndef GRAPHICS_CLASS_H_
 #define GRAPHICS_CLASS_H_
 
@@ -29,4 +31,4 @@ private:
 };
 
 #endif
-
+#endif

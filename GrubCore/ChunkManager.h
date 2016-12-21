@@ -8,7 +8,7 @@
 #include "BlockingQueue.h"
 #include "Window.h"
 #include "ChunkRequest.h"
-#include "BlockingChunkVector.h"
+#include <unordered_map>
 
 class ChunkManager
 {
@@ -45,7 +45,7 @@ public:
 
 	The x and z are the chunk position, which is the absolute position divided by the chunk width.
 	*/
-	static void SetBlock(long x, int y, long z);
+	static void SetBlock(long long int x, int y, long long int z);
 
 	/**
 	Draws all chunks to the specified window pointer.
@@ -58,11 +58,28 @@ public:
 	This will cause splits in the terrain to form
 	*/
 	static void SetSeed(int seed);
+
+	/**
+	Takes a chunk pointer and hashes it's position
+	*/
+	static long long int Hash(Chunk* chunk)
+	{
+		return ((long long int)chunk->data->ChunkX) + ((long long int)chunk->data->ChunkZ) * (((long long int)INT_MAX) / ((long long int)(ChunkWidth + 1)));
+	}
+
+	/**
+	Takes two ints and hash them
+	*/
+	static long long int Hash(int x, int z)
+	{
+		return  ((long long int)x) + ((long long int)z) * (((long long int)INT_MAX) / ((long long int)(ChunkWidth + 1)));
+	}
 private:
 	static void GenerateChunk();
 	static void Update();
-	static BlockingChunkVector chunkList;
-	static std::queue<Chunk*> deletionPool;
+	static std::unordered_map<long long int, Chunk*> chunkMap;
+	static std::vector<long long int> chunkList;
+	static std::queue<long long int> deletionPool;
 	static std::vector<std::thread> ThreadPool;	
 	static BlockingQueue<ChunkRequest> generationRequests;
 	static BlockingQueue<Chunk*> finishedGeneration;

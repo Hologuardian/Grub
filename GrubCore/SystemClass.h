@@ -1,3 +1,5 @@
+#include "Constants.h"
+#ifdef GRUB_DX11
 #ifndef _SYSTEMCLASS_H_
 #define _SYSTEMCLASS_H_
 
@@ -62,4 +64,5 @@ static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 /////////////
 static SystemClass* ApplicationHandle = 0;
 
+#endif
 #endif
