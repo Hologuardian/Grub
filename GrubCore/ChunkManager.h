@@ -25,22 +25,33 @@ public:
 	static void Clear();
 	ChunkManager() = delete;
 	~ChunkManager() = delete;
+
 	/**
 	Creates a chunk at the requested chunk position, requires a chunk renderer specified to generate the chunk.
 
 	The x and z are the chunk position, which is the absolute position divided by the chunk width.
 	*/
 	static void RequestChunk(int x, int z, ChunkRenderer* renderer, ChunkGenerator* generator, std::vector<ChunkDecorator*>* decorators);
+
 	/**
 	Requests a specific chunk to be removed, this is not currently a threaded operation.
 
 	The x and z are the chunk position, which is the absolute position divided by the chunk width.
 	*/
 	static void RemoveChunk(int x, int z);
+
+	/**
+	Creates a chunk at the requested chunk position, requires a chunk renderer specified to generate the chunk.
+
+	The x and z are the chunk position, which is the absolute position divided by the chunk width.
+	*/
+	static void SetBlock(long x, int y, long z);
+
 	/**
 	Draws all chunks to the specified window pointer.
 	*/
 	static void DrawChunks(Window* window);
+
 	/**
 	Changes the generation seed of the requested chunks
 

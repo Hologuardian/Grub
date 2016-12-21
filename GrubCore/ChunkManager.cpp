@@ -82,6 +82,11 @@ void ChunkManager::Update()
 	}
 }
 
+void ChunkManager::SetBlock(long x, int y, long z)
+{
+
+}
+
 void ChunkManager::DrawChunks(Window* window)
 {
 	Update();

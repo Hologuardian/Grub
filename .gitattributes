@@ -9,6 +9,7 @@
 Include/* linguist-vendored=false
 *.cpp linguist-language=C++
 *.h linguist-language=C++
+*.html linguist-documentation
 
 ###############################################################################
 # Set default behavior for command prompt diff.

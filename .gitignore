@@ -71,6 +71,7 @@ artifacts/
 *.scc
 *.sdf
 *.VC.db
+*.VC.opendb
 
 # Chutzpah Test files
 _Chutzpah*
