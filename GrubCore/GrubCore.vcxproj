@@ -179,18 +179,14 @@
     <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CubicChunkMesher.cpp" />
-    <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
-    <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="GLWindow.cpp" />
     <ClCompile Include="MarchingChunkMesher.cpp" />
-    <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>

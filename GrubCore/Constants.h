@@ -4,8 +4,8 @@
 #include "glm\glm\glm.hpp"
 #include "SimpleVertex.h"
 
-#define GRUB_USEOPENGL
-//#define GRUB_DX11
+//#define GRUB_USEOPENGL
+#define GRUB_DX11
 //#define GRUB_DX12
 
 typedef SimpleVertex Vert; 
