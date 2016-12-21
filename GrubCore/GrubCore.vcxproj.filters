@@ -63,9 +63,6 @@
     <ClCompile Include="GLCamera.cpp">
       <Filter>Source Files\GL</Filter>
     </ClCompile>
-    <ClCompile Include="GLChunkRenderer.cpp">
-      <Filter>Source Files\GL</Filter>
-    </ClCompile>
     <ClCompile Include="GLWindow.cpp">
       <Filter>Source Files\GL</Filter>
     </ClCompile>
@@ -98,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="SystemClass.cpp">
       <Filter>Source Files\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLChunkRenderer.cpp">
+      <Filter>Source Files\Chunk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
