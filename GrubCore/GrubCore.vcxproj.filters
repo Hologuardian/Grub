@@ -87,6 +87,9 @@
     <ClCompile Include="GLChunkRenderer.cpp">
       <Filter>Source Files\Chunk</Filter>
     </ClCompile>
+    <ClCompile Include="Direct3D.cpp">
+      <Filter>Source Files\DirectX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Clock.h">
@@ -197,16 +200,7 @@
     <ClInclude Include="BlockingChunkVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SystemClass.h">
-      <Filter>DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="InputClass.h">
-      <Filter>DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsClass.h">
-      <Filter>DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DClass.h">
+    <ClInclude Include="Direct3D.h">
       <Filter>DirectX</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,7 +3,9 @@
 #include "GrubTest.h"
 
 #ifdef GRUB_DX11
-#include <Windows.h>
+
+#include "Direct3D.h"
+
 #endif
 
 Grub* NewGame;
@@ -30,6 +32,8 @@ HWND hwnd = NULL;
 const int Width = 800;
 const int Height = 600;
 
+//Class object
+Direct3D* D3D;
 
 /** InitializeWindow() function will do what it says, then depending on if the window was made or not, 
 return either true or false.Then we initialize the message loop function, 
@@ -60,7 +64,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return 0;
 	}
 
+	if (!D3D->InitializeDirect3D11App(hInstance)) //Initialize Direct3D
+	{
+		MessageBox(0, "Direct3D Initialization - Failed ",
+			"Error", MB_OK);
+		return 0;
+	}
+
+	if (!D3D->InitScene()) //Initialize our Scene
+	{
+		MessageBox(0, "Scene Initialization - Failed ",
+			"Error", MB_OK);
+		return 0;
+	}
+
 	messageloop();
+
+	D3D->ReleaseObjects();
 	return 0;
 }
 
@@ -105,6 +125,7 @@ bool InitializeWindow(HINSTANCE hInstance, int ShowWnd, int width, int height, b
 		MessageBox(NULL, "Error Creating Window", "Error", MB_OK | MB_ICONERROR);
 		return 1;
 	}
+
 
 	//we need to now show the window and refresh it using UpdateWindow()
 	ShowWindow(hwnd, ShowWnd);
