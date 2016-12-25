@@ -1,7 +1,8 @@
 #include "ChunkManager.h"
 
-BlockingChunkVector ChunkManager::chunkList;
-std::queue<Chunk*> ChunkManager::deletionPool;
+std::unordered_map<long long int, Chunk*> ChunkManager::chunkMap;
+std::vector<long long int> ChunkManager::chunkList;
+std::queue<long long int> ChunkManager::deletionPool;
 std::vector<std::thread> ChunkManager::ThreadPool;
 BlockingQueue<ChunkRequest> ChunkManager::generationRequests;
 BlockingQueue<Chunk*> ChunkManager::finishedGeneration;
@@ -16,12 +17,14 @@ void ChunkManager::Initialize()
 
 void ChunkManager::Clear()
 {
-	for each(Chunk* chunk in chunkList)
+	for each(long long int c in chunkList)
 	{
+		Chunk* chunk = chunkMap[c];
 		delete chunk;
 		chunk = nullptr;
 	}
 	chunkList.clear();
+	chunkMap.clear();
 }
 
 void ChunkManager::GenerateChunk()
@@ -36,9 +39,6 @@ void ChunkManager::GenerateChunk()
 			request.chunk->Initialize();
 			finishedGeneration.push(request.chunk);
 			break;
-		case ChunkRequest::Deletion:
-			chunkList.erase(request.ChunkX, request.ChunkZ);
-			break;
 		}
 	}
 }
@@ -52,8 +52,7 @@ void ChunkManager::RequestChunk(int x, int z, ChunkRenderer* renderer, ChunkGene
 void ChunkManager::RemoveChunk(int x, int z)
 {
 	generationRequests.run = false;
-	Chunk* chunk = chunkList.get(x, z);
-	deletionPool.push(chunk);
+	deletionPool.push(Hash(x, z));
 	return;
 }
 
@@ -63,26 +62,42 @@ void ChunkManager::Update()
 	{
 		Chunk* chunk = finishedGeneration.pop();
 		chunk->Buffer();
-		chunkList.push_back(chunk);
+		long long int key = Hash(chunk);
+		chunkList.push_back(key);
+		if (chunkMap[key] == nullptr)
+			chunkMap[key] = chunk;
+		else
+			Logger::Log(EMessageType::LOG_ERROR, "Chunk Hash collision at: " + std::to_string(key));
 	}
-	for (int n = 0; n < 25; n++)
+	if (deletionPool.size() > 0)
 	{
-		if (deletionPool.size() > 0)
+		for (int n = 0; n < 5; n++)
 		{
-			Chunk* chunk = deletionPool.front();
-			if (chunk)
-				chunkList.erase(chunk->data->ChunkX, chunk->data->ChunkZ);
+			generationRequests.run = false;
+			long long int key = LLONG_MAX;
+			key = deletionPool.front();
+			if (key != LLONG_MAX)
+			{
+				delete chunkMap[key];
+				chunkMap[key] == nullptr;
+				chunkMap.erase(key);
+				for (int i = 0; i < chunkList.size(); i++)
+				{
+					if (chunkList[i] == key)
+						chunkList.erase(chunkList.begin() + i);
+				}
+			}
 			deletionPool.pop();
 		}
-		else
-		{
-			generationRequests.run = true;
-			generationRequests.condVar.notify_one();
-		}
+	}
+	else
+	{
+		generationRequests.run = true;
+		generationRequests.condVar.notify_one();
 	}
 }
 
-void ChunkManager::SetBlock(long x, int y, long z)
+void ChunkManager::SetBlock(long long int x, int y, long long int z)
 {
 
 }
@@ -90,7 +105,10 @@ void ChunkManager::SetBlock(long x, int y, long z)
 void ChunkManager::DrawChunks(Window* window)
 {
 	Update();
-	chunkList.DrawAll(window);
+	for (int i = 0; i < chunkList.size(); i++)
+	{
+		chunkMap[chunkList[i]]->Render(window);
+	}
 }
 
 void ChunkManager::SetSeed(int seed)

@@ -60,9 +60,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (!InitializeWindow(hInstance, nShowCmd, Width, Height, true))
 	{
 		MessageBox(0, "Window Initialization - Failed", "Error", MB_OK);
+		Logger::Log(EMessageType::LOG_ERROR, "Window Initialization - Failed");
 
 		return 0;
 	}
+	Logger::Log(EMessageType::LOG_ERROR, "Window Initialization - OK");
 
 	if (!D3D->InitializeDirect3D11App(hInstance)) //Initialize Direct3D
 	{
@@ -113,6 +115,7 @@ bool InitializeWindow(HINSTANCE hInstance, int ShowWnd, int width, int height, b
 	if (!RegisterClassEx(&wc))
 	{
 		MessageBox(NULL, "Error registering class", "Error", MB_OK | MB_ICONERROR);
+		Logger::Log(EMessageType::LOG_ERROR, "Error registering class");
 		return 1;
 	}
 
@@ -123,6 +126,7 @@ bool InitializeWindow(HINSTANCE hInstance, int ShowWnd, int width, int height, b
 	if (!hwnd)
 	{
 		MessageBox(NULL, "Error Creating Window", "Error", MB_OK | MB_ICONERROR);
+		Logger::Log(EMessageType::LOG_ERROR, "Error Creating Window");
 		return 1;
 	}
 
