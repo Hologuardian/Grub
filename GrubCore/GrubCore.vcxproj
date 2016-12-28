@@ -179,7 +179,6 @@
     <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CubicChunkMesher.cpp" />
-    <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="GLCamera.cpp" />
     <ClCompile Include="GLChunkRenderer.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -197,7 +196,6 @@
     <ClInclude Include="ChunkMesher.h" />
     <ClInclude Include="ChunkRequest.h" />
     <ClInclude Include="CubicChunkMesher.h" />
-    <ClInclude Include="Direct3D.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GraphicPrimitive.h" />
