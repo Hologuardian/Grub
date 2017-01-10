@@ -9,6 +9,7 @@
 #include "Window.h"
 #include "ChunkRequest.h"
 #include <unordered_map>
+#include "ChunkUpdate.h"
 
 class ChunkManager
 {
@@ -77,9 +78,12 @@ public:
 private:
 	static void GenerateChunk();
 	static void Update();
+	static void CheckDeletionQueue();
+	static void CheckUpdateQueue();
 	static std::unordered_map<long long int, Chunk*> chunkMap;
 	static std::vector<long long int> chunkList;
 	static std::queue<long long int> deletionPool;
+	static std::queue<ChunkUpdate*> chunkUpdateQueue;
 	static std::vector<std::thread> ThreadPool;	
 	static BlockingQueue<ChunkRequest> generationRequests;
 	static BlockingQueue<Chunk*> finishedGeneration;

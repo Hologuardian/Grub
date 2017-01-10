@@ -3,6 +3,7 @@
 std::unordered_map<long long int, Chunk*> ChunkManager::chunkMap;
 std::vector<long long int> ChunkManager::chunkList;
 std::queue<long long int> ChunkManager::deletionPool;
+std::queue<ChunkUpdate*> ChunkManager::chunkUpdateQueue;
 std::vector<std::thread> ChunkManager::ThreadPool;
 BlockingQueue<ChunkRequest> ChunkManager::generationRequests;
 BlockingQueue<Chunk*> ChunkManager::finishedGeneration;
@@ -34,11 +35,40 @@ void ChunkManager::GenerateChunk()
 		ChunkRequest request = generationRequests.pop();
 		switch (request.chunkRequestType)
 		{
-		case ChunkRequest::Generation:
-			request.chunk->Generate();
-			request.chunk->Initialize();
-			finishedGeneration.push(request.chunk);
-			break;
+			case ChunkRequest::Generation:
+			{
+				request.chunk->Generate();
+				request.chunk->Initialize();
+				finishedGeneration.push(request.chunk);
+				break;
+			}
+			case ChunkRequest::Update:
+			{
+				ChunkUpdate* update = request.update;
+				Chunk* chunk = chunkMap[update->chunkLocation];
+				if (chunk)
+				{
+					for each (long long int i in update->updates)
+					{
+						unsigned short id = i & USHRT_MAX;
+						int pos = i << 16;
+						//TODO implement block ID to value/color implementation.
+					}
+				}
+				break;
+			}
+			case ChunkRequest::Load:
+			{
+				break;
+			}
+			case ChunkRequest::Save:
+			{
+				break;
+			}
+			case ChunkRequest::Deletion:
+			{
+				break;
+			}
 		}
 	}
 }
@@ -69,6 +99,10 @@ void ChunkManager::Update()
 		else
 			Logger::Log(EMessageType::LOG_ERROR, "Chunk Hash collision at: " + std::to_string(key));
 	}
+}
+
+void ChunkManager::CheckDeletionQueue()
+{
 	if (deletionPool.size() > 0)
 	{
 		for (int n = 0; n < 5; n++)
@@ -95,6 +129,11 @@ void ChunkManager::Update()
 		generationRequests.run = true;
 		generationRequests.condVar.notify_one();
 	}
+}
+
+void ChunkManager::CheckUpdateQueue()
+{
+	
 }
 
 void ChunkManager::SetBlock(long long int x, int y, long long int z)
