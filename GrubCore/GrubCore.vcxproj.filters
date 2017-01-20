@@ -205,6 +205,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Effects.fx" />
+    <FxCompile Include="..\GrubBed\Effects.fx" />
   </ItemGroup>
 </Project>

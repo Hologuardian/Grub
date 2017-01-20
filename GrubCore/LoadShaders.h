@@ -145,10 +145,12 @@ ID3D11InputLayout* vertLayout;
 struct Vertex //Overload Vertex Structure
 {
 	Vertex(){}
-	Vertex(float x, float y, float z)
-		: pos(x, y, z) {}
+	Vertex(float x, float y, float z,
+		float cr, float cg, float cb, float ca)
+		: pos(x, y, z), color(cr, cg, cb, ca) {}
 
 		DirectX::XMFLOAT3 pos;	
+		DirectX::XMFLOAT4 color;
 };
 
 /**Create the input layout object, this tells Direct3D what our vertex structure consists of, and
@@ -159,6 +161,7 @@ one element in the vertex structure.
 D3D11_INPUT_ELEMENT_DESC layout[] =
 {
 	{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	{"COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
 };
 UINT numElements = ARRAYSIZE(layout);
 
