@@ -34,26 +34,29 @@ void TestChunkGenerator::generateChunkData(ChunkData* data, FastNoise noise)
 					{
 						if (k >= 50)
 						{
-							color = 0xEEEEFF;
+							color = 0xEEEEFFFF;
 						}
 						else
 						{
+							color += ((unsigned int)(170 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 24;
 							color += ((unsigned int)(170 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 16;
 							color += ((unsigned int)(170 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 8;
-							color += ((unsigned int)(170 - (noiseH / (float)ChunkHeight) * 255.0f) % 255);
+							color += 255;
 						}
 					}
 					else if (k <= 10)
 					{
+						color += ((unsigned int)(255 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 24;
 						color += ((unsigned int)(255 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 16;
-						color += ((unsigned int)(255 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 8;
-						color += ((unsigned int)(225 - (noiseH / (float)ChunkHeight) * 255.0f) % 255);
+						color += ((unsigned int)(225 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 8;
+						color += 255;
 					}
 					else
 					{
-						color += 0 << 16;
-						color += ((unsigned int)(150 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 8;
-						color += 0;
+						color += 0 << 24;
+						color += ((unsigned int)(150 - (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 16;
+						color += 0 << 8;
+						color += 255;
 					}
 					
 					//float noiseC = noise.GetGradient((i + ChunkWidth * n) * 10.0f, (k)* 10.0f, (j + ChunkWidth * m) * 10.0f);
@@ -62,9 +65,10 @@ void TestChunkGenerator::generateChunkData(ChunkData* data, FastNoise noise)
 				else if (k <= (ChunkHeight + 1) / 32)
 				{
 					unsigned int color = 0;
+					color += 0 << 24;
 					color += 0 << 16;
-					color += 0 << 8;
-					color += ((unsigned int)(160 + (noiseH / (float)ChunkHeight) * 255.0f) % 255);
+					color += ((unsigned int)(160 + (noiseH / (float)ChunkHeight) * 255.0f) % 255) << 8;
+					color += 255;
 					data->values->push_back(color);
 				}
 				else

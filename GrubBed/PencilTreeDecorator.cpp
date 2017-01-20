@@ -28,7 +28,7 @@ void PencilTreeDecorator::decorateChunkData(ChunkData * data, FastNoise noise)
 					if (height < 10)
 					{
 						height++;
-						unsigned int color = 0xf8990e;
+						unsigned int color = 0xf8990eff;
 						data->values->at(i * (ChunkWidth + 1) * (ChunkHeight + 1) + j * (ChunkHeight + 1) + k) = color;
 					}
 				}

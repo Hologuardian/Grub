@@ -48,6 +48,7 @@ void GrubTest::PreGenerate()
 					std::vector<ChunkDecorator*>* decorators = new std::vector<ChunkDecorator*>();
 
 					#ifdef GRUB_USEOPENGL
+					decorators->push_back(new TreeDecorator());
 					ChunkManager::RequestChunk(n, m, new GLChunkRenderer(((GrubTest*)instance)->window->program), new TestChunkGenerator(), decorators);
 					#endif
 				}
@@ -127,19 +128,19 @@ void GrubTest::Keyboard(unsigned char key)
 		break;
 	case 'Q':
 		((GrubTest*)instance)->speed = 150.0f;
-		((GrubTest*)instance)->MoveDirection.y += 1.0f;
+		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
 		break;
 	case 'q':
 		((GrubTest*)instance)->speed = 25.0f;
-		((GrubTest*)instance)->MoveDirection.y += 1.0f;
+		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
 		break;
 	case 'E':
 		((GrubTest*)instance)->speed = 150.0f;
-		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
+		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;
 	case 'e':
 		((GrubTest*)instance)->speed = 25.0f;
-		((GrubTest*)instance)->MoveDirection.y -= 1.0f;
+		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;
 	case 'F':
 	case 'f':
@@ -183,11 +184,11 @@ void GrubTest::KeyboardUp(unsigned char key)
 		break;
 	case 'Q':
 	case 'q':
-		((GrubTest*)instance)->MoveDirection.y += -1.0f;
+		((GrubTest*)instance)->MoveDirection.y += 1.0f;
 		break;
 	case 'E':
 	case 'e':
-		((GrubTest*)instance)->MoveDirection.y += 1.0f;
+		((GrubTest*)instance)->MoveDirection.y += -1.0f;
 		break;
 	}
 }

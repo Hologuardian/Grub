@@ -197,6 +197,12 @@
     <ClInclude Include="BlockingChunkVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ChunkUpdate.h">
+      <Filter>Header Files\Chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Effects.fx" />

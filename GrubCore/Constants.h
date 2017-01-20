@@ -4,8 +4,8 @@
 #include "glm\glm\glm.hpp"
 #include "SimpleVertex.h"
 
-//#define GRUB_USEOPENGL
-#define GRUB_DX11
+#define GRUB_USEOPENGL
+//#define GRUB_DX11
 //#define GRUB_DX12
 
 typedef SimpleVertex Vert; 
@@ -58,4 +58,30 @@ const float BlockHeight = 1.0f;
 const int ChunkSize = (ChunkWidth+1) * (ChunkWidth+1) * (ChunkHeight+1);
 const int BufferCount = 2;
 
+static unsigned int parseFloatColor(float r, float g, float b, float a)
+{
+	unsigned int color = 0;
+	color += ((unsigned int)(r * 255.0f) % 255) << 24;
+	color += ((unsigned int)(g * 255.0f) % 255) << 16;
+	color += ((unsigned int)(b * 255.0f) % 255) << 8;
+	color += ((unsigned int)(a * 255.0f) % 255);
+}
+
+static unsigned int parseFloatColor(Vector4 color)
+{
+	unsigned int color = 0;
+	color += ((unsigned int)(color.r * 255.0f) % 255) << 24;
+	color += ((unsigned int)(color.g * 255.0f) % 255) << 16;
+	color += ((unsigned int)(color.b * 255.0f) % 255) << 8;
+	color += ((unsigned int)(color.a * 255.0f) % 255);
+}
+
+static Vector4 parseIntColor(unsigned int color)
+{
+	return Vector4(
+		((color << 24) & 255) / 255.0f, 
+		((color << 16) & 255) / 255.0f, 
+		((color << 8) & 255) / 255.0f, 
+		(color & 255) / 255.0f);
+}
 #endif
